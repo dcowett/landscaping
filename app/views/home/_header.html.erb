@@ -15,11 +15,13 @@
       <li class="nav-item">
         <%= link_to "List Pins", pins_path, class: 'nav-link' %>
       </li>
-
+      <li class="nav-item">
+        <%= link_to "List Addresses", addresses_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "List Properties", properties_path, class: 'nav-link' %>
+      </li>
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "List Addresses", addresses_path, class: 'nav-link' %>
-        </li>
         <li class="nav-item">
           <%= link_to "New Pin", new_pin_path, class: 'nav-link' %>
         </li>
