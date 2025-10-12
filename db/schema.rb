@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_10_170928) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_12_082415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -53,6 +53,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_10_170928) do
     t.string "subdivision_name"
     t.string "owner_name_line1"
     t.string "owner_name_line2"
+    t.integer "user_id"
+    t.index ["street_number", "street_name"], name: "index_addresses_on_street", unique: true
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "pins", force: :cascade do |t|
@@ -61,6 +64,46 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_10_170928) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_pins_on_user_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.integer "parid"
+    t.string "situs_address"
+    t.string "situs_postal_city"
+    t.string "situs_postal_zip"
+    t.string "land_use_code"
+    t.string "land_use_desc"
+    t.string "homestead_indicator"
+    t.string "tax_district"
+    t.date "last_sale_date"
+    t.string "last_sale_vori"
+    t.string "last_sale_qualified"
+    t.decimal "last_sale_price"
+    t.float "land_acreage"
+    t.integer "bldg1_year_built"
+    t.integer "bldgs_sqft_unroof"
+    t.string "swimming_pool"
+    t.string "community_dev_dist"
+    t.string "cra_name"
+    t.string "neighborhood_code"
+    t.string "neighborhood_name"
+    t.string "subdivision_code"
+    t.string "subdivision_name"
+    t.decimal "just_value"
+    t.decimal "county_assessed_value"
+    t.decimal "county_exempt_value"
+    t.decimal "county_taxable_value"
+    t.string "owner_name_line1"
+    t.string "owner_name_line2"
+    t.string "mailing_address_line1"
+    t.string "mailing_address_line2"
+    t.string "mailing_city"
+    t.string "mailing_state"
+    t.string "mailing_postal_code"
+    t.string "mailing_country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "bldgs_sqft_living"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :properties
   resources :addresses do
     collection do
       post :import
