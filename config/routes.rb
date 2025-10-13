@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :properties
+  resources :properties do
+    collection do
+      post :import
+    end
+  end
+
   resources :addresses do
     collection do
       post :import

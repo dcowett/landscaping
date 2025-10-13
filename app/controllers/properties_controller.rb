@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties or /properties.json
   def index
-    @properties = Property.all.page(params[:page]).per(10)
+    @properties = Property.all.order("last_sale_price DESC").page(params[:page]).per(10)
   end
 
   # GET /properties/1 or /properties/1.json
@@ -54,6 +54,17 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to properties_path, notice: "Property was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
+    end
+  end
+
+  #  Import CSV file of properties
+  def import
+    import_file = params[:file]
+    if import_file.present? && import_file.content_type == "text/csv"
+      Property.import(import_file)
+      redirect_to properties_path, notice: "Properties added succuessfully"
+    else
+      redirect_to new_property_path, notice: "CSV file required"
     end
   end
 

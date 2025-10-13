@@ -1,11 +1,16 @@
 <% content_for :title, "New property" %>
 
 <h1>New property</h1>
-
+<h4> Import Properties</h4>
+<%= form_tag import_properties_path, multipart: true do %>
+  <%= file_field_tag :file, accept: "text/csv" %>
+  <%= submit_tag "Upload Property File" %>
+  <% end %>
+</br>
+<p> Or </p>
+<h4> Enter a Property</h4>
 <%= render "form", property: @property %>
-
 <br>
-
 <div>
   <%= link_to "Back to properties", properties_path %>
 </div>
