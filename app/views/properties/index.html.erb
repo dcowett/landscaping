@@ -9,8 +9,9 @@
     <thead>
       <tr>
         <th scope="col">Address</th>
-        <th scope="col">Sale Price</th>
         <th scope="col">Last Sale Date</th>
+        <th scope="col">Sale Price</th>
+        <th scope="col">Taxable Value</th>
         <th scope="col">Homestead</th>
         <th scope="col">Owner</th>
         <th scope="col">Action</th>
@@ -20,8 +21,9 @@
       <% @properties.each do |property| %>
         <tr>
           <td><%= property.situs_address %></th>
-          <td><%= number_to_currency(property.last_sale_price) %></th>
           <td><%= property.last_sale_date.strftime("%F") %></th>
+          <td><%= number_to_currency(property.last_sale_price) %></th>
+          <td><%= number_to_currency(property.county_taxable_value) %></th>
           <td><%= property.homestead_indicator %></th>
           <td><%= property.owner_name_line1 %></th>
           <td><%= link_to "Show this property", property %></td>
