@@ -25,8 +25,8 @@
           <td><%= number_to_currency(property.last_sale_price) %></th>
           <td><%= number_to_currency(property.county_taxable_value) %></th>
           <td><%= property.homestead_indicator %></th>
-          <td><%= property.owner_name_line1 %></th>
-          <td><%= link_to "Show this property", property %></td>
+          <td><%= property.owner_name_line1.truncate(25) %></th>
+          <td><%= link_to "Show property", property %></td>
         </tr>
       <% end %>
     </tbody>
