@@ -1,5 +1,6 @@
 <p style="color: green"><%= notice %></p>
 <%= paginate @properties, class: "page-link"  %>
+<%= link_to "New property", new_property_path %>
 <% content_for :title, "Properties" %>
 
 <h1>Properties</h1>
@@ -32,6 +33,4 @@
     </tbody>
   </table>
 </div>
-
-<%= link_to "New property", new_property_path %>
 <%= paginate @properties, class: "page-link"  %>

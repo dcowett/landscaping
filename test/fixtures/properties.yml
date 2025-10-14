@@ -15,8 +15,7 @@ one:
   last_sale_price: 9.99
   land_acreage: 1.5
   bldg1_year_built: 1
-  bldgs_sqft_living: MyString
-  integer: MyString
+  bldgs_sqft_living: 1
   bldgs_sqft_unroof: 1
   swimming_pool: MyString
   community_dev_dist: MyString
@@ -39,7 +38,7 @@ one:
   mailing_country: MyString
 
 two:
-  parid: 1
+  parid: 2
   situs_address: MyString
   situs_postal_city: MyString
   situs_postal_zip: MyString
@@ -53,8 +52,7 @@ two:
   last_sale_price: 9.99
   land_acreage: 1.5
   bldg1_year_built: 1
-  bldgs_sqft_living: MyString
-  integer: MyString
+  bldgs_sqft_living: 1
   bldgs_sqft_unroof: 1
   swimming_pool: MyString
   community_dev_dist: MyString

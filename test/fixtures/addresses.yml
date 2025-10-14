@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street_number: 1
-  street_name: MyString
-  street_type: MyString
+  street_number: 8051
+  street_name: MyStringOne
   zip_code: MyString
   neighborhood: MyString
 
 two:
-  street_number: 1
-  street_name: MyString
-  street_type: MyString
+  street_number: 8055
+  street_name: MyStringTwo
   zip_code: MyString
   neighborhood: MyString
