@@ -7,42 +7,44 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
       <li class="nav-item">
-        <%= link_to "Home", root_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
         <%= link_to "About", home_about_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "List Pins", pins_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "List Addresses", addresses_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
         <%= link_to "List Properties", properties_path, class: 'nav-link' %>
       </li>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "New Pin", new_pin_path, class: 'nav-link' %>
-        </li>
-         <li class="nav-item">
+      <li class="nav-item">
           <%= link_to "New Property", new_property_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link') %>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+              <li class="dropdown-item">
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link') %>
+                </li>
+              <li class="dropdown-item">
+                <%= link_to "Edit Account", edit_user_registration_path, class: 'nav-link' %>
+                </li>
+            <% else %>
+              <li class="dropdown-item">
+                <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+                </li>
+              <li class="dropdown-item">
+                <%= link_to "Join", new_user_registration_path, class: 'nav-link' %>
+                </li>
+            <% end %>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <%= link_to "Edit Account", edit_user_registration_path, class: 'nav-link' %>
-          </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Join", new_user_registration_path, class: 'nav-link' %>
-        </li>
-      <% end %>
       </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
