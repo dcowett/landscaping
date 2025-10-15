@@ -5,22 +5,15 @@
   </p>
 
   <p>
-    <strong>Land use desc:</strong>
-    <%= property.land_use_desc %>
+    <strong>Owner name:</strong>
+    <%= property.owner_name_line1 %>
+    <%= property.owner_name_line2 %>
   </p>
 
   <p>
-    <strong>Homestead:</strong>
-    <%= property.homestead_indicator %>
-  </p>
-
-  <p>
-    <strong>SQFT:</strong>
-    <%= property.bldgs_sqft_living %>
-  </p>
-
-  <p>
-    <strong>Last sale price:</strong>
+    <strong>Last Sale Date:</strong>
+    <%= property.last_sale_date %>
+    <strong>Last Sale Price:</strong>
     <%= number_to_currency(property.last_sale_price) %>
   </p>
 
@@ -30,12 +23,32 @@
   </p>
 
   <p>
-    <strong>County assessed value:</strong>
-    <%= number_to_currency(property.county_assessed_value) %>
+    <strong>Land use desc:</strong>
+    <%= property.land_use_desc %>
   </p>
 
   <p>
-    <strong>County exempt value:</strong>
+    <strong>Year built:</strong>
+    <%= property.bldg1_year_built %>
+    <strong>Homestead:</strong>
+    <%= property.homestead_indicator %>
+    <strong>Pool:</strong>
+    <%= property.swimming_pool %>
+  </p>
+
+  <p>
+    <strong>SQFT Living:</strong>
+    <%= property.bldgs_sqft_living %>
+    <strong>Under roof:</strong>
+    <%= property.bldgs_sqft_unroof %>
+    <strong>Land acreage:</strong>
+    <%= property.land_acreage %>
+  </p>
+
+  <p>
+    <strong>County assessed value:</strong>
+    <%= number_to_currency(property.county_assessed_value) %>
+    <strong>exempt value:</strong>
     <%= number_to_currency(property.county_exempt_value)%>
   </p>
 
@@ -45,19 +58,10 @@
   </p>
 
   <p>
-    <strong>Owner name line1:</strong>
-    <%= property.owner_name_line1 %>
-    <%= property.owner_name_line2 %>
-  </p>
-
-  <p>
-    <strong>Mailing address line1:</strong>
+    <strong>Mailing address:</strong>
     <%= property.mailing_address_line1 %>
     <%= property.mailing_address_line2 %>
-  </p>
-
-  <p>
-    <strong>Mailing city:</strong>
+    <strong>City:</strong>
     <%= property.mailing_city %>
     <%= property.mailing_state %>
     <%= property.mailing_postal_code %>

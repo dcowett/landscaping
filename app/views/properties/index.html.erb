@@ -19,6 +19,7 @@
       </tr>
     </thead>
     <tbody>
+      <% page_taxable_value = 0 %>
       <% @properties.each do |property| %>
         <tr>
           <td><%= property.situs_address %></th>
@@ -28,9 +29,15 @@
           <td><%= property.homestead_indicator %></th>
           <td><%= property.owner_name_line1.truncate(25) %></th>
           <td><%= link_to "Show property", property %></td>
+          <%if property.county_taxable_value?
+            page_taxable_value = page_taxable_value + property.county_taxable_value
+          end  %>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<h5 class="float-end" >(Page) Total Taxable Value: <%= number_to_currency(page_taxable_value) %></h5>
+
 <%= paginate @properties, class: "page-link"  %>

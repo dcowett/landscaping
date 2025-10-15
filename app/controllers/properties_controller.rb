@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties or /properties.json
   def index
-    @properties = Property.all.order("last_sale_date DESC").page(params[:page]).per(25)
+    @properties = Property.all.order("last_sale_date DESC").page(params[:page]).per(100)
   end
 
   # GET /properties/1 or /properties/1.json

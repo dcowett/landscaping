@@ -11,187 +11,182 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :parid, style: "display: block" %>
-    <%= form.number_field :parid %>
-  </div>
-
-  <div>
+  <div class="form-group">
     <%= form.label :situs_address, style: "display: block" %>
-    <%= form.text_field :situs_address %>
+    <%= form.text_field :situs_address, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :situs_postal_city, style: "display: block" %>
-    <%= form.text_field :situs_postal_city %>
-  </div>
-
-  <div>
-    <%= form.label :situs_postal_zip, style: "display: block" %>
-    <%= form.text_field :situs_postal_zip %>
-  </div>
-
-  <div>
-    <%= form.label :land_use_code, style: "display: block" %>
-    <%= form.text_field :land_use_code %>
-  </div>
-
-  <div>
-    <%= form.label :land_use_desc, style: "display: block" %>
-    <%= form.text_field :land_use_desc %>
-  </div>
-
-  <div>
-    <%= form.label :homestead_indicator, style: "display: block" %>
-    <%= form.text_field :homestead_indicator %>
-  </div>
-
-  <div>
-    <%= form.label :tax_district, style: "display: block" %>
-    <%= form.text_field :tax_district %>
-  </div>
-
-  <div>
+  <div class="form-group">
     <%= form.label :last_sale_date, style: "display: block" %>
-    <%= form.date_field :last_sale_date %>
+    <%= form.date_field :last_sale_date, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :last_sale_vori, style: "display: block" %>
-    <%= form.text_field :last_sale_vori %>
-  </div>
-
-  <div>
-    <%= form.label :last_sale_qualified, style: "display: block" %>
-    <%= form.text_field :last_sale_qualified %>
-  </div>
-
-  <div>
+  <div class="form-group">
     <%= form.label :last_sale_price, style: "display: block" %>
-    <%= form.text_field :last_sale_price %>
+    <%= form.text_field :last_sale_price, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :land_acreage, style: "display: block" %>
-    <%= form.text_field :land_acreage %>
-  </div>
-
-  <div>
-    <%= form.label :bldg1_year_built, style: "display: block" %>
-    <%= form.number_field :bldg1_year_built %>
-  </div>
-
-  <div>
-    <%= form.label :bldgs_sqft_living, style: "display: block" %>
-    <%= form.text_field :bldgs_sqft_living %>
-  </div>
-
-  <div>
-    <%= form.label :integer, style: "display: block" %>
-    <%= form.text_field :integer %>
-  </div>
-
-  <div>
-    <%= form.label :bldgs_sqft_unroof, style: "display: block" %>
-    <%= form.number_field :bldgs_sqft_unroof %>
-  </div>
-
-  <div>
-    <%= form.label :swimming_pool, style: "display: block" %>
-    <%= form.text_field :swimming_pool %>
-  </div>
-
-  <div>
-    <%= form.label :community_dev_dist, style: "display: block" %>
-    <%= form.text_field :community_dev_dist %>
-  </div>
-
-  <div>
-    <%= form.label :cra_name, style: "display: block" %>
-    <%= form.text_field :cra_name %>
-  </div>
-
-  <div>
-    <%= form.label :neighborhood_code, style: "display: block" %>
-    <%= form.text_field :neighborhood_code %>
-  </div>
-
-  <div>
-    <%= form.label :neighborhood_name, style: "display: block" %>
-    <%= form.text_field :neighborhood_name %>
-  </div>
-
-  <div>
-    <%= form.label :subdivision_code, style: "display: block" %>
-    <%= form.text_field :subdivision_code %>
-  </div>
-
-  <div>
-    <%= form.label :subdivision_name, style: "display: block" %>
-    <%= form.text_field :subdivision_name %>
-  </div>
-
-  <div>
-    <%= form.label :just_value, style: "display: block" %>
-    <%= form.text_field :just_value %>
-  </div>
-
-  <div>
-    <%= form.label :county_assessed_value, style: "display: block" %>
-    <%= form.text_field :county_assessed_value %>
-  </div>
-
-  <div>
-    <%= form.label :county_exempt_value, style: "display: block" %>
-    <%= form.text_field :county_exempt_value %>
-  </div>
-
-  <div>
+  <div class="form-group">
     <%= form.label :county_taxable_value, style: "display: block" %>
-    <%= form.text_field :county_taxable_value %>
+    <%= form.text_field :county_taxable_value, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
+    <%= form.label :situs_postal_city, style: "display: block" %>
+    <%= form.text_field :situs_postal_city, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :situs_postal_zip, style: "display: block" %>
+    <%= form.text_field :situs_postal_zip, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :parid, style: "display: block" %>
+    <%= form.number_field :parid, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :land_use_code, style: "display: block" %>
+    <%= form.text_field :land_use_code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :land_use_desc, style: "display: block" %>
+    <%= form.text_field :land_use_desc, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :homestead_indicator, style: "display: block" %>
+    <%= form.text_field :homestead_indicator, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tax_district, style: "display: block" %>
+    <%= form.text_field :tax_district, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_sale_vori, style: "display: block" %>
+    <%= form.text_field :last_sale_vori, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_sale_qualified, style: "display: block" %>
+    <%= form.text_field :last_sale_qualified, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :land_acreage, style: "display: block" %>
+    <%= form.text_field :land_acreage, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bldg1_year_built, style: "display: block" %>
+    <%= form.number_field :bldg1_year_built, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bldgs_sqft_living, style: "display: block" %>
+    <%= form.text_field :bldgs_sqft_living, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bldgs_sqft_unroof, style: "display: block" %>
+    <%= form.number_field :bldgs_sqft_unroof, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :swimming_pool, style: "display: block" %>
+    <%= form.text_field :swimming_pool, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :community_dev_dist, style: "display: block" %>
+    <%= form.text_field :community_dev_dist, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cra_name, style: "display: block" %>
+    <%= form.text_field :cra_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :neighborhood_code, style: "display: block" %>
+    <%= form.text_field :neighborhood_code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :neighborhood_name, style: "display: block" %>
+    <%= form.text_field :neighborhood_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :subdivision_code, style: "display: block" %>
+    <%= form.text_field :subdivision_code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :subdivision_name, style: "display: block" %>
+    <%= form.text_field :subdivision_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :just_value, style: "display: block" %>
+    <%= form.text_field :just_value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :county_assessed_value, style: "display: block" %>
+    <%= form.text_field :county_assessed_value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :county_exempt_value, style: "display: block" %>
+    <%= form.text_field :county_exempt_value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :owner_name_line1, style: "display: block" %>
-    <%= form.text_field :owner_name_line1 %>
+    <%= form.text_field :owner_name_line1, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :owner_name_line2, style: "display: block" %>
-    <%= form.text_field :owner_name_line2 %>
+    <%= form.text_field :owner_name_line2, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_address_line1, style: "display: block" %>
-    <%= form.text_field :mailing_address_line1 %>
+    <%= form.text_field :mailing_address_line1, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_address_line2, style: "display: block" %>
-    <%= form.text_field :mailing_address_line2 %>
+    <%= form.text_field :mailing_address_line2, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_city, style: "display: block" %>
-    <%= form.text_field :mailing_city %>
+    <%= form.text_field :mailing_city, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_state, style: "display: block" %>
-    <%= form.text_field :mailing_state %>
+    <%= form.text_field :mailing_state, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_postal_code, style: "display: block" %>
-    <%= form.text_field :mailing_postal_code %>
+    <%= form.text_field :mailing_postal_code, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :mailing_country, style: "display: block" %>
-    <%= form.text_field :mailing_country %>
+    <%= form.text_field :mailing_country, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
