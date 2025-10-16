@@ -76,6 +76,6 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.expect(property: [ :parid, :situs_address, :situs_postal_city, :situs_postal_zip, :land_use_code, :land_use_desc, :homestead_indicator, :tax_district, :last_sale_date, :last_sale_vori, :last_sale_qualified, :last_sale_price, :land_acreage, :bldg1_year_built, :bldgs_sqft_living, :bldgs_sqft_unroof, :swimming_pool, :community_dev_dist, :cra_name, :neighborhood_code, :neighborhood_name, :subdivision_code, :subdivision_name, :just_value, :county_assessed_value, :county_exempt_value, :county_taxable_value, :owner_name_line1, :owner_name_line2, :mailing_address_line1, :mailing_address_line2, :mailing_city, :mailing_state, :mailing_postal_code, :mailing_country, :userid ])
+      params.expect(property: [ :parid, :situs_address, :situs_postal_city, :situs_postal_zip, :land_use_code, :land_use_desc, :homestead_indicator, :tax_district, :last_sale_date, :last_sale_vori, :last_sale_qualified, :last_sale_price, :land_acreage, :bldg1_year_built, :bldgs_sqft_living, :bldgs_sqft_unroof, :swimming_pool, :community_dev_dist, :cra_name, :neighborhood_code, :neighborhood_name, :subdivision_code, :subdivision_name, :just_value, :county_assessed_value, :county_exempt_value, :county_taxable_value, :owner_name_line1, :owner_name_line2, :mailing_address_line1, :mailing_address_line2, :mailing_city, :mailing_state, :mailing_postal_code, :mailing_country ])
     end
 end
