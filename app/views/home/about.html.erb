@@ -3,5 +3,17 @@
     <h1>About</h1>
     <p>Find me in app/views/home/index.html.erb</p>
 
+  <%= form_with url: "/home/about", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.search_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+  </br>
+  <form class="d-flex justify-content-end" role="search", action="/home/about" accept-charset="UTF-8" method="get">
+    <input class="form-control me-6" type="search" placeholder="Search Properties" aria-label="Search" name="search" id="search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
+
+
   </div>
 </div>
