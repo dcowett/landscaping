@@ -1,0 +1,19 @@
+# Exported from Render on 2025-10-21T14:21:53Z
+version: "1"
+services:
+- type: web
+  name: landscaping
+  runtime: ruby
+  repo: https://github.com/dcowett/landscaping
+  plan: free
+  envVars:
+  - key: DATABASE_URL
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: WEB_CONCURRENCY
+    sync: false
+  region: oregon
+  buildCommand: bin/render-build.sh
+  startCommand: bin/rails server
+  autoDeployTrigger: commit
