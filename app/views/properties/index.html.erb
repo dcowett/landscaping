@@ -22,12 +22,12 @@
       <% page_taxable_value = 0 %>
       <% @properties.each do |property| %>
         <tr>
-          <td><%= property.situs_address %></th>
-          <td><%= property.last_sale_date.strftime("%F") %></th>
-          <td><%= number_to_currency(property.last_sale_price) %></th>
-          <td><%= number_to_currency(property.county_taxable_value) %></th>
-          <td><%= property.homestead_indicator %></th>
-          <td><%= property.owner_name_line1.truncate(25) %></th>
+          <td><%= property.situs_address %></td>
+          <td><%= property.last_sale_date.strftime("%F") %></td>
+          <td><%= number_to_currency(property.last_sale_price) %></td>
+          <td><%= number_to_currency(property.county_taxable_value) %></td>
+          <td><%= property.homestead_indicator %></td>
+          <td><%= property.owner_name_line1.truncate(25) %></td>
           <td><%= link_to "Show property", property %></td>
           <%if property.county_taxable_value?
             page_taxable_value = page_taxable_value + property.county_taxable_value

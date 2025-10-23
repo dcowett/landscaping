@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :notes
   resources :properties do
+    resources :notes, except: [:index], controller: "properties/notes"
+
     collection do
       post :import
     end

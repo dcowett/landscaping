@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th scope="col">Last Update</th>
+        <th scope="col">Property</th>
         <th scope="col">Code</th>
         <th scope="col">Note</th>
         <th scope="col">Action</th>
@@ -17,7 +18,8 @@
     <tbody>
       <% @notes.each do |note| %>
         <tr>
-          <td><%= note.updated_at.strftime("%F %H:%M") %></th>
+          <td><%= note.updated_at.strftime("%m/%d/%Y %H:%M") %></th>
+          <td><%= note.property_id %></th>
           <td><%= note.code %></th>
           <td><%= note.notes %></th>
           <td><%= link_to "Show note", note %></td>

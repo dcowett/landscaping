@@ -13,6 +13,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @property = Property.find(params[:id])
+    @note = @property.notes
   end
 
   # GET /properties/new

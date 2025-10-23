@@ -1,4 +1,4 @@
-class NotesController < ApplicationController
+class Properties::NotesController < ApplicationController
   before_action :set_note, only: %i[ show edit update destroy ]
 
   # GET /notes or /notes.json
@@ -12,6 +12,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
+    @property = Property.find(params[:property_id])
     @note = Note.new
   end
 
@@ -21,15 +22,17 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
+    @property = Property.find(params[:property_id])
     @note = Note.new(note_params)
+    @note.property = @property
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: "Note was successfully created." }
-        format.json { render :show, status: :created, location: @note }
+        format.html { redirect_to @property, notice: "Note was successfully created." }
+        format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.json { render json: @property.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,10 +52,13 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-    @note.destroy!
+     @property = Property.find(params[:property_id])
+     @note = Note.find(params[:id])
+     title = @note.notes
+     @note.destroy!
 
     respond_to do |format|
-      format.html { redirect_to notes_path, notice: "Note was successfully destroyed.", status: :see_other }
+      format.html { redirect_to @property, notice: "\"#{title}\" was successfully deleted.", status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -65,6 +71,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.expect(note: [ :code, :notes ])
+      params.expect(note: [ :code, :notes, :property_id ])
     end
 end

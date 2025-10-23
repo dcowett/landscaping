@@ -1,10 +1,44 @@
 <p style="color: green"><%= notice %></p>
 <h1>Show property</h1>
-<%= render @property %>
+<p>
+    <strong>Situs address:</strong>
+    <%= @property.situs_address %>
+  </p>
+  <p>
+    <strong>Owner name:</strong>
+    <%= @property.owner_name_line1 %>
+    <%= @property.owner_name_line2 %>
+  </p>
+
+  <div class="media">
+    <div class="media-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Last Update</th>
+            <th scope="col">Code</th>
+            <th scope="col">Note</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @note.each do |note| %>
+            <tr>
+              <td><%= note.updated_at.strftime("%m/%d/%Y %H:%M") %></td>
+              <td><%= note.code %></td>
+              <td><%= note.notes %></td>
+              <td><%= link_to "Delete", [@property, note], data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this note?" }%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 <div>
   <%= link_to "Edit this property", edit_property_path(@property) %> |
   <%= link_to "Back to properties", properties_path %>
+  <%= link_to "Add new note", new_property_note_path(@property), class:"pull-right" %>
   <p>
     <%= button_to "Destroy this property", @property, method: :delete, class:"btn btn-danger"  %>
   </p>
