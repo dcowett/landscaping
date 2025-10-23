@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Notes" %>
+
+<h1>Notes</h1>
+
+<div id="notes">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Last Update</th>
+        <th scope="col">Code</th>
+        <th scope="col">Note</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @notes.each do |note| %>
+        <tr>
+          <td><%= note.updated_at.strftime("%F %H:%M") %></th>
+          <td><%= note.code %></th>
+          <td><%= note.notes %></th>
+          <td><%= link_to "Show note", note %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New note", new_note_path %>
