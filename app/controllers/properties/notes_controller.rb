@@ -1,14 +1,6 @@
 class Properties::NotesController < ApplicationController
-  before_action :set_note, only: %i[ show edit update destroy ]
-
-  # GET /notes or /notes.json
-  def index
-    @notes = Note.all.order("created_at DESC")
-  end
-
-  # GET /notes/1 or /notes/1.json
-  def show
-  end
+  before_action :set_property
+  before_action :set_note, except: [:new, :create]
 
   # GET /notes/new
   def new
@@ -41,8 +33,8 @@ class Properties::NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: "Note was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @note }
+        format.html { redirect_to @property, notice: "Note was successfully updated.", status: :see_other }
+        format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @note.errors, status: :unprocessable_entity }
@@ -67,6 +59,10 @@ class Properties::NotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_note
       @note = Note.find(params.expect(:id))
+    end
+
+     def set_property
+      @property = Property.find(params[:property_id])
     end
 
     # Only allow a list of trusted parameters through.
