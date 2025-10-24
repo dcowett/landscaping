@@ -14,7 +14,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1 or /properties/1.json
   def show
     @property = Property.find(params[:id])
-    @note = @property.notes
+    @note = @property.notes.order("created_at DESC")
   end
 
   # GET /properties/new

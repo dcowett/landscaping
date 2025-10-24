@@ -3,7 +3,7 @@ class Properties::NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.all.order("updated_at DESC")
+    @notes = Note.all.order("created_at DESC")
   end
 
   # GET /notes/1 or /notes/1.json

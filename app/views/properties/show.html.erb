@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <h1>Show property</h1>
 <p>
     <strong>Situs address:</strong>
@@ -9,7 +8,7 @@
     <%= @property.owner_name_line1 %>
     <%= @property.owner_name_line2 %>
   </p>
-
+  <%= link_to "Add new note", new_property_note_path(@property), class: "btn btn-outline-success pull-right" %>
   <div class="media">
     <div class="media-body">
       <table class="table table-striped">
@@ -28,7 +27,7 @@
               <td><%= note.updated_at.strftime("%m/%d/%Y %H:%M") %></td>
               <td><%= note.code %></td>
               <td><%= note.notes %></td>
-              <td><%= link_to "Edit", [@property, note], class: "btn btn-outline-info" %></td>
+              <td><%= link_to "Edit", edit_property_note_path(property_id: @property.id, id: note.id), class: "btn btn-outline-info" %></td>
               <td><%= button_to "Delete", [@property, note], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class:"btn btn-outline-danger" %></td>
             </tr>
           <% end %>
