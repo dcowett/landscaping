@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notes, :only => [:index]
+
   resources :addresses do
     collection do
       post :import
