@@ -4,7 +4,6 @@ class Properties::NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @property = Property.find(params[:property_id])
     @note = Note.new
   end
 
@@ -14,7 +13,6 @@ class Properties::NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    @property = Property.find(params[:property_id])
     @note = Note.new(note_params)
     @note.property = @property
 
@@ -44,13 +42,12 @@ class Properties::NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-     @property = Property.find(params[:property_id])
      @note = Note.find(params[:id])
-     title = @note.notes
+     title = @note.id
      @note.destroy!
 
     respond_to do |format|
-      format.html { redirect_to @property, notice: "\"#{title}\" was successfully deleted.", status: :see_other }
+      format.html { redirect_to @property, notice: "Note_id: \"#{title}\" was successfully deleted.", status: :see_other }
       format.json { head :no_content }
     end
   end
