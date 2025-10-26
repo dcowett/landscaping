@@ -9,6 +9,12 @@ class PropertiesController < ApplicationController
     else
       @properties = Property.all.order("last_sale_date DESC").page(params[:page]).per(100)
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Property.to_csv, filename: "properties-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv"}
+    end
+
   end
 
   # GET /properties/1 or /properties/1.json

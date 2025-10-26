@@ -7,7 +7,6 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       format.html
-      #format.csv { render text: @notes.to_csv }
       format.csv { send_data Note.to_csv, filename: "notes-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv"}
     end
   end

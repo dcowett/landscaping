@@ -5,6 +5,9 @@
 
 <h1>Properties</h1>
 
+<h3>Download File</h3>
+<%= link_to "Export", properties_path(format: "csv"), class:"btn btn-default" %>
+
 <div id="properties">
   <table class="table table-striped">
     <thead>
@@ -23,7 +26,9 @@
       <% @properties.each do |property| %>
         <tr>
           <td><%= property.situs_address %></td>
-          <td><%= property.last_sale_date.strftime("%F") %></td>
+          <td><%= if !property.last_sale_date.nil?
+                        property.last_sale_date.strftime("%F")
+              end %></td>
           <td><%= number_to_currency(property.last_sale_price) %></td>
           <td><%= number_to_currency(property.county_taxable_value) %></td>
           <td><%= property.homestead_indicator %></td>

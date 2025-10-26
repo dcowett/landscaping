@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   validates :situs_address, presence: true, uniqueness: true
-  validates :last_sale_date, presence: true
+
   before_validation :uppercase_address
   has_many :notes, dependent: :destroy
 
@@ -12,6 +12,15 @@ class Property < ApplicationRecord
 
   def uppercase_address
     situs_address.upcase!
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |property|
+        csv << property.attributes.values_at(*column_names)
+      end
+    end
   end
 
 end
