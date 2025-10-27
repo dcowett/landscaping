@@ -26,8 +26,20 @@
     <%= render 'home/header' %>
 
     <div class="container" >
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+        <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-error">
+        <%= flash[:error] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert">
+        <%= flash[:alert] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
