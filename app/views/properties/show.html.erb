@@ -39,7 +39,6 @@
 <div>
   <%= link_to "Edit this property", edit_property_path(@property) %> |
   <%= link_to "Back to properties", properties_path %>
-  <%= link_to "Add new note", new_property_note_path(@property), class: "btn btn-outline-success pull-right" %>
   <p>
     <%= button_to "Delete this property", @property, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this property and associated notes? This action is NOT recoverable. " } }, class:"btn btn-outline-danger"  %>
   </p>
