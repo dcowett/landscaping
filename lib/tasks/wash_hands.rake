@@ -1,4 +1,4 @@
-task :wash_hands => [ :wet, :soap, :wash, :rinse, :dry ] do
+task wash_hands: [ :wet, :soap, :wash, :rinse, :dry ] do
   puts "Task is done, your hands are clean"
 end
 

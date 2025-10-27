@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   resources :properties do
-    resources :notes, except: [:index], controller: "properties/notes"
+    resources :notes, except: [ :index ], controller: "properties/notes"
 
     collection do
       post :import
     end
   end
 
-  resources :notes, :only => [:index]
+  resources :notes, only: [ :index ]
 
   resources :addresses do
     collection do
