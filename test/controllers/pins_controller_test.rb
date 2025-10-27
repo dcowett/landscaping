@@ -52,5 +52,4 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
   def sign_in(user)
     post user_session_path, params: { email_address: "one@example.com", password: "password" }
   end
-
 end

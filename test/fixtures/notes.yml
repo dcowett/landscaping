@@ -3,7 +3,9 @@
 one:
   code: MyString
   notes: MyString
+  property_id: 1
 
 two:
   code: MyString
   notes: MyString
+  property_id: 1

@@ -1,8 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   parid: 1
-  situs_address: MyString
+  situs_address: "8051 Victoria Falls"
   situs_postal_city: MyString
   situs_postal_zip: MyString
   land_use_code: MyString
@@ -38,8 +39,9 @@ one:
   mailing_country: MyString
 
 two:
+  id: 2
   parid: 2
-  situs_address: MyString
+  situs_address: "8055 Victoria Falls"
   situs_postal_city: MyString
   situs_postal_zip: MyString
   land_use_code: MyString
