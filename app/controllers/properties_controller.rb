@@ -3,7 +3,6 @@ class PropertiesController < ApplicationController
 
   # GET /properties or /properties.json
   def index
-    #binding.b
     if !params[:search].nil?
       @properties = Property.where("situs_address LIKE ?", "%" + params[:search].upcase + "%").page(params[:page]).per(100)
     else
@@ -12,9 +11,8 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Property.to_csv, filename: "properties-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv"}
+      format.csv { send_data Property.to_csv, filename: "properties-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv" }
     end
-
   end
 
   # GET /properties/1 or /properties/1.json

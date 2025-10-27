@@ -1,6 +1,6 @@
 class Properties::NotesController < ApplicationController
   before_action :set_property
-  before_action :set_note, except: [:new, :create]
+  before_action :set_note, except: [ :new, :create ]
 
   # GET /notes/new
   def new

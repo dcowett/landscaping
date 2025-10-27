@@ -5,7 +5,7 @@ class Property < ApplicationRecord
   has_many :notes, dependent: :destroy
 
   def self.import(file)
-    CSV.foreach(file.path, headers:true) do |row|
+    CSV.foreach(file.path, headers: true) do |row|
       Property.create! row.to_hash
     end
   end
@@ -22,5 +22,4 @@ class Property < ApplicationRecord
       end
     end
   end
-
 end
