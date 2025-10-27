@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
   belongs_to :property
+  validates :notes, presence: true, length: { minimum: 1 }
 
   def self.to_csv
     CSV.generate do |csv|
