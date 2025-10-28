@@ -3,7 +3,8 @@ require "test_helper"
 class PinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @pin = pins(:one)
-    sign_in @user
+    @user = users(:one)
+  #  sign_in @user
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pin" do
     assert_difference("Pin.count") do
-      post pins_url, params: { pin: { description: @pin.description } }
+      post pins_url, params: { pin: { description: @pin.description, user_id: @pin.user_id } }
     end
 
     assert_redirected_to pin_url(Pin.last)

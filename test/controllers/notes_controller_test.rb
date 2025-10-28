@@ -3,6 +3,7 @@ require "test_helper"
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @note = notes(:one)
+    @property = properties(:one)
   end
 
   test "should get index" do
@@ -24,17 +25,17 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show note" do
-    get property_note_url(@note)
+    get property_note_url([@property.property_id, @note])
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_property_note_url(@note)
+    get edit_property_note_url([@property.property_id, @note])
     assert_response :success
   end
 
   test "should update note" do
-    patch property_note_url(@note), params: { note: { code: @note.code, notes: @note.notes } }
+    patch property_note_url([@property.property_id, @note]), params: { note: { code: @note.code, notes: @note.notes } }
     assert_redirected_to property_note_url(@note)
   end
 

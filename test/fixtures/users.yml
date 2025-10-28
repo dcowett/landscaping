@@ -6,11 +6,13 @@
 #
 
 one:
+  id: 1
   email: one@example.com
   name: name1
   encrypted_password: password
 
 two:
+  id: 2
   email: two@example.com
   name: name2
   encrypted_password: password
