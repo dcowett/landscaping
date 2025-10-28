@@ -8,13 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [ :index ]
-
-  resources :addresses do
-    collection do
-      post :import
-    end
-  end
-
   resources :pins
   devise_for :users
 
@@ -23,7 +16,6 @@ Rails.application.routes.draw do
   end
 
   get "home/index"
-
   get "home/about"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
