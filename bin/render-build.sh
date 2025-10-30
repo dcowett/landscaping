@@ -3,6 +3,7 @@
 set -o errexit
 
 npm install -g sass
+npm i -D postcss postcss-cli
 
 bundle install
 bin/rails assets:precompile
