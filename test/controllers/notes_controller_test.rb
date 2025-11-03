@@ -30,12 +30,12 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get edit_property_note_url([@property.property_id, @note])
+    get edit_property_note_url([ @property.property_id, @note ])
     assert_response :success
   end
 
   test "should update note" do
-    patch property_note_url([@property.property_id, @note]), params: { note: { code: @note.code, notes: @note.notes } }
+    patch property_note_url([ @property.property_id, @note ]), params: { note: { code: @note.code, notes: @note.notes } }
     assert_redirected_to property_note_url(@note)
   end
 
