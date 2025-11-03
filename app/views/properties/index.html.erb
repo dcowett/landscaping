@@ -16,6 +16,7 @@
         <th scope="col">Taxable Value</th>
         <th scope="col">Homestead</th>
         <th scope="col">Owner</th>
+        <th scope="col">ID</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
           <td><%= number_to_currency(property.county_taxable_value) %></td>
           <td><%= property.homestead_indicator %></td>
           <td><%= property.owner_name_line1.truncate(25) %></td>
+          <td><%= property.id %></td>
           <td><%= link_to "Show property", property %></td>
           <%if property.county_taxable_value?
             page_taxable_value = page_taxable_value + property.county_taxable_value
