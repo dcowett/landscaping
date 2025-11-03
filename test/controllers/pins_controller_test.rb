@@ -4,7 +4,6 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @pin = pins(:one)
     @user = users(:one)
-  # sign_in @user
   end
 
   test "should get index" do

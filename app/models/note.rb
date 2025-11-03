@@ -10,7 +10,7 @@ class Note < ApplicationRecord
 
   def self.to_csv
     CSV.generate do |csv|
-      column_names = %w( property_id situs_address updated_at created_at code note )
+      column_names = %w[ property_id situs_address updated_at created_at code note ]
           csv << column_names
           all.each do |note|
             @property = Property.find(note.property_id)

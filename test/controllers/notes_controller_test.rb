@@ -25,7 +25,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show note" do
-    get property_note_url([@property.property_id, @note])
+    get property_note_url([ @property.property_id, @note ])
     assert_response :success
   end
 
