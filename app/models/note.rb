@@ -2,9 +2,15 @@ class Note < ApplicationRecord
   belongs_to :property
   validates :notes, presence: true, length: { minimum: 1 }
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Note.create! row.to_hash
+    end
+  end
+
   def self.to_csv
     CSV.generate do |csv|
-      column_names = %w( PropertyID Address Updated Created Code Note )
+      column_names = %w( property_id Address Updated Created code note )
           csv << column_names
           all.each do |note|
             @property = Property.find(note.property_id)

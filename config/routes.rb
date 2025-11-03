@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notes, only: [ :index ]
+  resources :notes, only: [ :index, :new ] do
+    collection do
+      post :import
+    end
+  end
+
   resources :pins
   devise_for :users
 

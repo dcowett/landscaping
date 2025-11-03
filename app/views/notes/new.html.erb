@@ -1,0 +1,7 @@
+<% content_for :title, "Import Notes" %>
+
+<h1> Import Notes</h1>
+<%= form_tag import_notes_path, multipart: true do %>
+  <%= file_field_tag :file, accept: "text/csv" %>
+  <%= submit_tag "Upload Notes File" %>
+  <% end %>
