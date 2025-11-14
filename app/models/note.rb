@@ -15,7 +15,7 @@ class Note < ApplicationRecord
           csv << column_names
           all.each do |note|
             @address = propertyArray.find { |id| id[0] == note.property_id }
-            csv << [ note.id, note.property_id, @address, note.updated_at, note.created_at, note.code, note.notes  ]
+            csv << [ note.id, note.property_id, @address[1], note.updated_at, note.created_at, note.code, note.notes  ]
       end
     end
   end
