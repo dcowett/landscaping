@@ -1,0 +1,12 @@
+3.4.3 :091 > 
+3.4.3 :092 > address_array = Property.select('id').all.map(&:id)
+  Property Load (66.9ms)  SELECT "properties"."id" FROM "properties" /*application='Landscaping'*/
+ => 
+[4147,
+... 
+3.4.3 :093 > address_array = Property.select('situs_address').all.map(&:situs_address)
+  Property Load (1.5ms)  SELECT "properties"."situs_address" FROM "properties" /*application='Landscaping'*/
+ => 
+["4003 BOWEN FALLS PL",
+... 
+3.4.3 :094 > 
