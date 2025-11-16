@@ -274,6 +274,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-linux-musl)
       racc (~> 1.4)
+    openssl (3.3.2)
     orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.3)
@@ -490,6 +491,7 @@ DEPENDENCIES
   jbuilder
   kamal
   kaminari (~> 1.2, >= 1.2.2)
+  openssl
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

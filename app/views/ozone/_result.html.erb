@@ -1,0 +1,11 @@
+<div class="container mt-3">
+  <div class="mt-4 p-5 @app_color rounded">
+    <h1> Ozone Air Quality </h1>
+    <h3><%= @final_output %>  <%= @final_category %></h3>
+    <p>This is the current ozone air quality readout for <%= @zip_query %>  zipcode in the <%= @final_area %> area</p>
+    <hr class="my-4"
+    <p><%= @api_description %></p>
+    <p>Hit "Reload" in your web browser to update the reading...</p>
+    <%= render "ozone/search"  %>
+  </div>
+</div>

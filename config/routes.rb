@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get "home/index"
   get "home/about"
+  get "ozone/index"
+  post "zipcode" => "ozone#zipcode"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
