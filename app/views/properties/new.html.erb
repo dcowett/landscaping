@@ -1,10 +1,10 @@
 <% content_for :title, "New property" %>
-
 <h1>New property</h1>
 <h4> Import Properties</h4>
 <%= form_tag import_properties_path, multipart: true do %>
-  <%= file_field_tag :file, accept: "text/csv" %>
-  <%= submit_tag "Upload Property File" %>
+  <%= file_field_tag :file, accept: "text/csv", class: "form-control me-2" %>
+  </br>
+  <%= submit_tag "Upload Property File", class: "btn btn-outline-primary" %>
   <% end %>
 </br>
 <p> Or </p>

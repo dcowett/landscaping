@@ -1,5 +1,5 @@
 <%=  form_tag zipcode_path, :method => 'POST' do %>
     <div class="d-sm-inline-flex mt-3" role="search">
     <%= text_field_tag 'zipcode', nil, placeholder: "Search ZipCode", class: "form-control me-2" %>
-    <%= submit_tag 'Search', data: {turbo: false}, class: "btn btn-outline-primary" %>
+    <%= submit_tag 'Search', data: {turbo: false}, class: "btn btn-primary" %>
   <% end %>
