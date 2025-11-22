@@ -1,8 +1,9 @@
 class OzoneController < ApplicationController
-  def index
-    require "net/http"
-    require "json"
 
+  require "net/http"
+  require "json"
+
+  def index
     @time = Time.new
     @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=33607&date=" +  @time.strftime("%Y-%m-%d") + "&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2"
     @uri = URI(@url)
@@ -49,11 +50,8 @@ class OzoneController < ApplicationController
     @zip_query = params[:zipcode]
     if params[:zipcode] == ""
       @zip_query = "Hey, you did not enter anything"
-    elsif params[:zipcode]
-      # do something
-
-    require "net/http"
-    require "json"
+      elsif params[:zipcode]
+    end
 
     @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=" + @zip_query.to_s + "&date=2025-09-19&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2"
     @uri = URI(@url)
@@ -95,5 +93,4 @@ class OzoneController < ApplicationController
       @api_color = "bg-silver"
     end
   end
-end
 end
