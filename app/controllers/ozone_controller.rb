@@ -1,10 +1,10 @@
 class OzoneController < ApplicationController
   def index
-    require 'net/http'
-    require 'json'
+    require "net/http"
+    require "json"
 
     @time = Time.new
-    @url = 'https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=33607&date=' +  @time.strftime("%Y-%m-%d") + '&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2'
+    @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=33607&date=" +  @time.strftime("%Y-%m-%d") + "&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2"
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
@@ -15,9 +15,9 @@ class OzoneController < ApplicationController
       @final_output = "Error"
       @final_category = "Error"
     else
-      @final_output = @output[0]['AQI']
-      @final_category = @output[0]['Category']['Name']
-      @final_area = @output[0]['ReportingArea']
+      @final_output = @output[0]["AQI"]
+      @final_category = @output[0]["Category"]["Name"]
+      @final_area = @output[0]["ReportingArea"]
     end
 
     if @final_output == "Error"
@@ -52,10 +52,10 @@ class OzoneController < ApplicationController
     elsif params[:zipcode]
       # do something
 
-    require 'net/http'
-    require 'json'
+    require "net/http"
+    require "json"
 
-    @url = 'https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=' + @zip_query.to_s + '&date=2025-09-19&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2'
+    @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=" + @zip_query.to_s + "&date=2025-09-19&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2"
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
@@ -66,9 +66,9 @@ class OzoneController < ApplicationController
       @final_output = "Error"
       @final_category = "Error"
     else
-      @final_output = @output[0]['AQI']
-      @final_category = @output[0]['Category']['Name']
-      @final_area = @output[0]['ReportingArea']
+      @final_output = @output[0]["AQI"]
+      @final_category = @output[0]["Category"]["Name"]
+      @final_area = @output[0]["ReportingArea"]
     end
 
     if @final_output == "Error"
