@@ -1,9 +1,10 @@
 class OzoneController < ApplicationController
-def index
+  def index
     require 'net/http'
     require 'json'
 
-    @url = 'https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=33607&date=2025-11-16&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2'
+    @time = Time.new
+    @url = 'https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=33607&date=' +  @time.strftime("%Y-%m-%d") + '&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2'
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
@@ -93,9 +94,6 @@ def index
     else
       @api_color = "bg-silver"
     end
-    end
-
-
   end
-
+end
 end
