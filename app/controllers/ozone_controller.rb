@@ -1,5 +1,4 @@
 class OzoneController < ApplicationController
-
   require "net/http"
   require "json"
 
@@ -50,7 +49,7 @@ class OzoneController < ApplicationController
     @zip_query = params[:zipcode]
     if params[:zipcode] == ""
       @zip_query = "Hey, you did not enter anything"
-      elsif params[:zipcode]
+    elsif params[:zipcode]
     end
 
     @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=" + @zip_query.to_s + "&date=2025-09-19&distance=150&API_KEY=F9296E6E-BD3D-489F-BA45-D65EBACB05B2"
