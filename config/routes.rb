@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get "ozone/index"
   post "zipcode" => "ozone#zipcode"
 
+  get "stories/index"
+  get "stories/show"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
