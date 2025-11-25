@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
-    @stories = Story.all.order('RANDOM()')
+    @stories = Story.all.order("RANDOM()")
   end
 
   def show
