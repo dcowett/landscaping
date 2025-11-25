@@ -18,10 +18,10 @@
     <tbody>
       <% @notes.each do |note| %>
         <tr>
-          <td><%= note.updated_at.strftime("%m/%d/%Y %H:%M") %></th>
-          <td><%= note.property_id %></th>
-          <td><%= note.code %></th>
-          <td><%= note.notes %></th>
+          <td><%= note.updated_at.strftime("%m/%d/%Y %H:%M") %></td>
+          <td><%= note.property_id %></td>
+          <td><%= note.code %></td>
+          <td><%= note.notes %></td>
           <td><%= link_to "Show note", note %></td>
         </tr>
       <% end %>

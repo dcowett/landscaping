@@ -1,2 +1,25 @@
-<h1>Stories#index</h1>
-<p>Find me in app/views/stories/index.html.erb</p>
+<% content_for :title, "Stories" %>
+<%= link_to "New story", new_story_path %>
+<h1>Stories</h1>
+</br>
+
+<div id="stories">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Story Link</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stories.each do |story|%>
+        <tr>
+          <td><%= link_to story.name, story.link %></td>
+          <td><%= link_to "Edit", edit_story_path(id: story.id), class: "btn btn-outline-info" %></td>
+          <td><%= button_to "Delete", story, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class:"btn btn-outline-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
