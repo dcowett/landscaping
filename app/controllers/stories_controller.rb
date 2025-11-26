@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  require "open-uri"
+
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
@@ -60,6 +62,10 @@ class StoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+      #  redirect_to '/404'
+      flash[:error] = e
+      redirect_to stories_path
     end
 
     # Only allow a list of trusted parameters through.

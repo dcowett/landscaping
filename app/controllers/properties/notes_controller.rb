@@ -56,10 +56,18 @@ class Properties::NotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_note
       @note = Note.find(params.expect(:id))
+      rescue ActiveRecord::RecordNotFound => e
+      #  redirect_to '/404'
+      flash[:error] = e
+      redirect_to properties_path
     end
 
      def set_property
       @property = Property.find(params[:property_id])
+      rescue ActiveRecord::RecordNotFound => e
+      #  redirect_to '/404'
+      flash[:error] = e
+      redirect_to properties_path
     end
 
     # Only allow a list of trusted parameters through.
