@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag "masonary" %>
-<%= render "home/jumbo" unless user_signed_in? %>
 <h1>Pins</h1>
 <%= link_to "New pin", new_pin_path %>
 <%= paginate @pins, class: "page-link"  %>
