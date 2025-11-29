@@ -10,7 +10,16 @@
       </ul>
     </div>
   <% end %>
+  <p> Current User:
+    <% if user_signed_in? %>
+      <%= current_user.id %>
+      <%= current_user.email %>
+      <%= current_user.name %>
+    <% else %>
+      User not signed in
+    <% end %>
 
+  </p>
   <div class="form-group">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name, class: "form-control" %>

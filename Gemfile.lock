@@ -450,6 +450,9 @@ GEM
     unicode-emoji (4.1.0)
     uri (1.1.1)
     useragent (0.16.11)
+    validate_url (1.0.15)
+      activemodel (>= 3.0.0)
+      public_suffix
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -505,6 +508,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  validate_url
   web-console
 
 RUBY VERSION

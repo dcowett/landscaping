@@ -15,7 +15,7 @@
     <tbody>
       <% @stories.each do |story|%>
         <tr>
-          <td><%= link_to story.name, story.link %></td>
+          <td><%= link_to story.name, story %></td>
           <td><%= link_to "Edit", edit_story_path(id: story.id), class: "btn btn-outline-info" %></td>
           <td><%= button_to "Delete", story, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class:"btn btn-outline-danger" %></td>
         </tr>

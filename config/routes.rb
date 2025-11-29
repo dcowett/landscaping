@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "votes/create"
   resources :properties do
     resources :notes, except: [ :index ], controller: "properties/notes"
 
@@ -25,7 +26,10 @@ Rails.application.routes.draw do
   get "ozone/index"
   post "zipcode" => "ozone#zipcode"
 
-  resources :stories
+  resources :stories do
+    resources :votes do
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

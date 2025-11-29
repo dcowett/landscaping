@@ -1,3 +1,25 @@
 <h1>Show Story</h1>
 <p>Find me in app/views/stories/show.html.erb</p>
-<%= link_to @story.name, @story.link %>
+
+<h2>
+  <span id="vote_score">
+    Score: <%= @story.votes.size %>
+  </span>
+  <%= @story.name %>
+</h2>
+<p>
+  <%= link_to @story.link, @story.link %>
+</p>
+<div id="vote_form">
+  <%= form_for [ @story, Vote.new ], remote: true do |f| %>
+    <%= f.submit 'Vote for it' %>
+  <% end %>
+</div>
+<ul id="vote_history">
+  <% if @story.votes.empty? %>
+    <em>No votes yet!</em>
+  <% else %>
+    <%= render partial:'votes/vote',
+        collection: @story.votes.latest %>
+  <% end %>
+</ul>

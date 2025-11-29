@@ -1,6 +1,5 @@
 class StoriesController < ApplicationController
-  require "open-uri"
-
+  before_action :authenticate_user!, except: %i[ index ]
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
@@ -13,11 +12,11 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @story = Story.new
+    @story = current_user.stories.build
   end
 
   def create
-    @story = Story.new(story_params)
+    @story = current_user.stories.build(story_params)
 
     respond_to do |format|
       if @story.save
