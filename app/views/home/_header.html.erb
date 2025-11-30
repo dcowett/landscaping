@@ -25,12 +25,21 @@
               <li><hr class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to "Import Notes", new_note_path, class: 'nav-link' %></li>
               <li class="dropdown-item"><%= link_to "List Pins", pins_path, class: 'nav-link' %></li>
-              </ul>
-      </ul>
+            </ul>
+          </li>
       <form class="d-flex" role="search", action="/properties" accept-charset="UTF-8" method="get">
         <input class="form-control me-2" type="search" placeholder="Search Properties" aria-label="Search" name="search" id="search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>
-  </div>
+
+
+
+<% if user_signed_in? %>
+          Hello <%= current_user.name %>
+      <% else %>
+        <em>Not logged in.</em>
+      <% end %>
+
+    </div>
 </nav>

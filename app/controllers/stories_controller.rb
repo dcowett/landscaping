@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!, except: %i[ index ]
+  # before_action :authenticate_user!, except: %i[ index ]
+  before_action :authenticate_user!
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
