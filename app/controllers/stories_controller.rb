@@ -14,10 +14,12 @@ class StoriesController < ApplicationController
 
   def new
     @story = current_user.stories.build
+    # @story = Story.new
   end
 
   def create
     @story = current_user.stories.build(story_params)
+    # @story = Story.new(story_params)
 
     respond_to do |format|
       if @story.save
