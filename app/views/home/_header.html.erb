@@ -37,8 +37,10 @@
 
 <% if user_signed_in? %>
           Hello <%= current_user.name %>
+          <button class="btn btn-outline-primary" type="submit"> <%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link') %></button>
       <% else %>
-        <em>Not logged in.</em>
+        <em>Not logged in  </em>
+        <button class="btn btn-outline-primary" type="submit"><%= link_to "Login", new_user_session_path, class: 'nav-link' %></button>
       <% end %>
 
     </div>
