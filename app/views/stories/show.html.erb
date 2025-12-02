@@ -8,9 +8,13 @@
 <p>
   <%= link_to @story.link, @story.link %>
 </p>
+<p class="submitted_by">
+  Submitted by:
+  <span><%= @story.user.name %></span>
+</p>
 <div id="vote_form">
   <%= form_for [ @story, Vote.new ], remote: true do |f| %>
-    <%= f.submit 'Vote for it' %>
+    <%= f.submit 'Vote for this story' %>
   <% end %>
 </div>
 <ul id="vote_history">

@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
     devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
   end
+
+  def ensure_login
+    return true if logged_in?
+    session[:return_to] = request.fullpath
+    redirect_to new_session_path and return false
+  end
 end
