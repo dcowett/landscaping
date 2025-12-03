@@ -72,6 +72,6 @@ class StoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def story_params
-      params.expect(story: [ :name, :link ])
+      params.expect(story: [ :name, :link, :description ])
     end
 end

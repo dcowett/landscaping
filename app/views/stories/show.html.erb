@@ -1,16 +1,15 @@
 <h1>Show Story</h1>
-<h2>
-  <span id="vote_score">
-    Score: <%= @story.votes.size %>
-  </span>
-  <%= @story.name %>
-</h2>
+<h2><%= @story.name %></h2>
 <p>
   <%= link_to @story.link, @story.link %>
 </p>
 <p class="submitted_by">
   Submitted by:
   <span><%= @story.user.name %></span>
+  |
+  <span id="vote_score">
+    Score: <%= @story.votes.size %>
+  </span>
 </p>
 <div id="vote_form">
   <%= form_for [ @story, Vote.new ], remote: true do |f| %>

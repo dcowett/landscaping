@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_29_103541) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_03_101936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -118,10 +118,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_29_103541) do
 
   create_table "stories", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.text "description"
     t.string "link"
     t.string "name"
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "votes_count", default: 0
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
