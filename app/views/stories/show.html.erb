@@ -11,11 +11,27 @@
     Score: <%= @story.votes.size %>
   </span>
 </p>
-<div id="vote_form">
-  <%= form_for [ @story, Vote.new ], remote: true do |f| %>
-    <%= f.submit 'Vote for this story' %>
-  <% end %>
-</div>
+<% unless @story.tag_list.empty? %>
+  <p class="tags">
+    <strong>Tags:</strong>
+    <%= render partial: "tags/tag", collection: @story.tags %>
+  </p>
+<% end %>
+<% if user_signed_in? %>
+  <div id="vote_form">
+    <%= form_for [@story, Vote.new], remote: true do %>
+      <%= submit_tag 'Vote for this story', class:"btn btn-outline-success" %>
+	<% end %>
+  </div>
+<% else %>
+  <p>
+    <em>
+      You would be able to vote for this story if you were
+      <%= link_to 'logged in', new_user_session_path %>!
+    </em>
+  </p>
+<% end %>
+
 <ul id="vote_history">
   <% if @story.votes.empty? %>
     <em>No votes yet!</em>
@@ -24,3 +40,11 @@
         collection: @story.votes.latest %>
   <% end %>
 </ul>
+
+<div>
+  <%= link_to "Edit this story", edit_story_path(@story) %> |
+  <%= link_to "Back to stories", stories_path %>
+  <p>
+    <%= button_to "Delete", @story, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class:"btn btn-outline-danger" %>
+  </p>
+</div>

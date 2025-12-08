@@ -16,4 +16,6 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.fullpath
     redirect_to new_session_path and return false
   end
+
+  helper_method :ensure_login
 end

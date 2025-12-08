@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "tags/show"
   get "votes/create"
   resources :properties do
     resources :notes, except: [ :index ], controller: "properties/notes"
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
     resources :votes do
     end
   end
+
+  resources :tags
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

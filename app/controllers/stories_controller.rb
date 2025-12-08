@@ -4,7 +4,8 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
-    @stories = Story.all.order("RANDOM()")
+    # @stories = Story.all.order("RANDOM()")
+    @stories = Story.all.order("votes_count DESC")
   end
 
   def show
@@ -72,6 +73,6 @@ class StoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def story_params
-      params.expect(story: [ :name, :link, :description ])
+      params.require(:story).permit(:name, :link, :description, :tag_list)
     end
 end
