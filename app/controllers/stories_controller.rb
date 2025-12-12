@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
-  # before_action :authenticate_user!, except: %i[ index ]
-  before_action :authenticate_user!, only: %i[ new create ]
+  # before_action :authenticate_user!, only: %i[ new create ]
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def index
@@ -15,12 +15,10 @@ class StoriesController < ApplicationController
 
   def new
     @story = current_user.stories.build
-    # @story = Story.new
   end
 
   def create
     @story = current_user.stories.build(story_params)
-    # @story = Story.new(story_params)
 
     respond_to do |format|
       if @story.save
