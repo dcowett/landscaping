@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   end
 
   resources :pins
-  devise_for :users
+
+  devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
+      }
 
   devise_scope :user do
    get "/users/sign_out" => "devise/sessions#destroy"
