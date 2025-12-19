@@ -6,9 +6,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Story Link</th>
-        <th scope="col">Description</th>
-        <th scope="col">Votes</th>
+        <th scope="col">Story Link / Description</th>
+        <th scope="col">Likes</th>
         <th scope="col">ID</th>
       </tr>
     </thead>
@@ -16,11 +15,19 @@
       <% @stories.each do |story|%>
         <tr>
           <td><%= link_to story.name, story %></td>
-          <td><%= story.description %></td>
           <td><%= story.votes_count %></td>
           <td><%= story.id %></td>
         </tr>
-      <% end %>
+        <tr>
+          <td><%= story.description %></td>
+          <td><% unless story.tag_list.empty? %>
+                <span class="tags">
+                <%= render partial: "tags/tag", collection: story.tags %>
+                </span>
+                <% end %>
+              <% end %>
+            </td>
+        </tr>
     </tbody>
   </table>
 </div>

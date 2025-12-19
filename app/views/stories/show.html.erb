@@ -36,6 +36,7 @@
   <% if @story.votes.empty? %>
     <em>No votes yet!</em>
   <% else %>
+    <strong>Vote History:</strong>
     <%= render partial:'votes/vote',
         collection: @story.votes.latest %>
   <% end %>
