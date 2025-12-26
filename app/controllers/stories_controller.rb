@@ -3,9 +3,15 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_story, only: %i[ show edit update destroy ]
 
+  def like
+    @story = Story.all.find(params[:id])
+    Like.create(user_id: current_user.id, story_id: @story.id)
+    redirect_to story_path(@story)
+  end
+
   def index
     # @stories = Story.all.order("RANDOM()")
-    @stories = Story.all.order("votes_count DESC")
+    @stories = Story.all.order("likes_count DESC")
   end
 
   def show

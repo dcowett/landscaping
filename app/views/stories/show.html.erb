@@ -1,5 +1,4 @@
-<h1>Show Story</h1>
-<h2><%= @story.name %></h2>
+<h1><%= @story.name %></h1>
 <p>
   <%= link_to @story.link, @story.link %>
 </p>
@@ -7,8 +6,8 @@
   Submitted by:
   <span><%= @story.user.name %></span>
   |
-  <span id="vote_score">
-    Score: <%= @story.votes.size %>
+  <span id="likes">
+    Score: <%= @story.likes.size %>
   </span>
 </p>
 <% unless @story.tag_list.empty? %>
@@ -21,7 +20,7 @@
   <div id="vote_form">
     <%= form_for [@story, Vote.new], remote: true do %>
       <%= submit_tag 'Vote for this story', class:"btn btn-outline-success" %>
-	<% end %>
+	    <% end %>
   </div>
 <% else %>
   <p>
@@ -32,11 +31,32 @@
   </p>
 <% end %>
 
+</br>
+<button type="button" class="btn btn-outline-success position-relative">
+  Likes
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    <%= @story.likes.size %>
+    <span class="visually-hidden">number of likes</span>
+  </span>
+</button>
+
+</br>
+
+<div class="btn btn-outline-success position-relative">
+  Like
+  <%= button_to "", story_like_path(@story), method: "put" %>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    <%= @story.likes.size %>
+    <span class="visually-hidden">number of likes</span>
+  </span>
+</div>
+
+</br>
 <ul id="vote_history">
   <% if @story.votes.empty? %>
     <em>No votes yet!</em>
   <% else %>
-    <strong>Vote History:</strong>
+    <strong>Votes History:</strong>
     <%= render partial:'votes/vote',
         collection: @story.votes.latest %>
   <% end %>

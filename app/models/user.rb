@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :pins
   has_many :stories
   has_many :votes
+  has_many :likes
 end

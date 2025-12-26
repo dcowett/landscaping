@@ -9,6 +9,12 @@ class Story < ApplicationRecord
     end
   end
 
+  has_many :likes, dependent: :destroy do
+    def liked?(user)
+      !!self.likes.find{ | like | like.user_id == user_id }
+    end
+  end
+
   def to_param
     "#{id}-#{name.gsub(/\W/, '-').downcase}"
   end
