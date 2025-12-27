@@ -5,7 +5,9 @@ class StoriesController < ApplicationController
 
   def like
     @story = Story.all.find(params[:id])
-    Like.create(user_id: current_user.id, story_id: @story.id)
+    Like.create(user_id: current_user.id, story_id: @story.id, value: 0)
+    # params[:like][:user_id] = current_user.id
+    # @like = Like.new(like_params)
     redirect_to story_path(@story)
   end
 
@@ -78,5 +80,9 @@ class StoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def story_params
       params.require(:story).permit(:name, :link, :description, :tag_list)
+    end
+
+    def like_params
+      params.require(:like).permit(:value, :user_id, :reference_id, :reference_type)
     end
 end

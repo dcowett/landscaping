@@ -10,6 +10,7 @@ class Story < ApplicationRecord
   end
 
   has_many :likes, dependent: :destroy do
+  # has_many :likes, as: :reference, dependent: :destroy  do
     def liked?(user)
       !!self.likes.find{ | like | like.user_id == user_id }
     end
