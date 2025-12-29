@@ -4,10 +4,10 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy ]
 
   def like
-    @story = Story.all.find(params[:id])
-    Like.create(user_id: current_user.id, story_id: @story.id, value: 0)
-    # params[:like][:user_id] = current_user.id
-    # @like = Like.new(like_params)
+    @story = Story.find(params[:id])
+    @like = current_user.likes.find_or_create_by(reference: @story) do |l|
+      l.value = 1
+    end
     redirect_to story_path(@story)
   end
 

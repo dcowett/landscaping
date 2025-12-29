@@ -7,7 +7,7 @@
   <span><%= @story.user.name %></span>
   |
   <span id="likes">
-    Score: <%= @story.likes.size %>
+    Score: <%= @story.likes_count %>
   </span>
 </p>
 <% unless @story.tag_list.empty? %>
@@ -30,23 +30,12 @@
     </em>
   </p>
 <% end %>
-
-</br>
-<button type="button" class="btn btn-outline-success position-relative">
-  Likes
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    <%= @story.likes.size %>
-    <span class="visually-hidden">number of likes</span>
-  </span>
-</button>
-
 </br>
 
-<div class="btn btn-outline-success position-relative">
-  Like
-  <%= button_to "", story_like_path(@story), method: "put" %>
+<div>
+  <%= button_to "Like", story_like_path(@story), method: "put", :form_class => "btn btn-outline-success" %>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    <%= @story.likes.size %>
+    <%= @story.likes_count %>
     <span class="visually-hidden">number of likes</span>
   </span>
 </div>

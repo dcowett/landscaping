@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_26_222703) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_27_230231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -62,11 +62,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_222703) do
     t.datetime "created_at", null: false
     t.integer "reference_id"
     t.string "reference_type"
-    t.bigint "story_id", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.integer "value", default: 0
-    t.index ["story_id"], name: "index_likes_on_story_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -182,12 +180,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_222703) do
     t.string "last_sign_in_ip"
     t.datetime "locked_at"
     t.string "name"
+    t.integer "reference_id"
+    t.string "reference_type"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.integer "sign_in_count", default: 0, null: false
     t.string "unlock_token"
     t.datetime "updated_at", null: false
+    t.integer "value", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
@@ -203,7 +204,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_222703) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "likes", "stories"
   add_foreign_key "likes", "users"
   add_foreign_key "notes", "properties"
   add_foreign_key "taggings", "tags"
