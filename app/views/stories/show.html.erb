@@ -10,6 +10,8 @@
     Score: <%= @story.likes_count %>
   </span>
 </p>
+<%= button_to "👍 👏 ❤️ 💡 👎" %>
+
 <% unless @story.tag_list.empty? %>
   <p class="tags">
     <strong>Tags:</strong>
@@ -31,6 +33,25 @@
   </p>
 <% end %>
 </br>
+
+<div class="space-y-6">
+  <!-- Auto-submit enabled (default behavior) -->
+  <div class="space-y-2">
+    <h4 class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Auto-submit enabled (default)</h4>
+    <form class="p-4 border border-neutral-200 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800">
+      <div class="relative gap-y-1.5" data-controller="emoji-picker" data-emoji-picker-auto-submit-value="true">
+        <label for="reaction_1" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Reaction (auto-submits)</label>
+        <div class="flex items-center gap-2">
+          <button type="button" class="outline-hidden size-8 text-xl shrink-0 flex items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-100 hover:text-neutral-800 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-200" data-action="click->emoji-picker#toggle" data-emoji-picker-target="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-6" width="18" height="18" viewBox="0 0 18 18"><g fill="currentColor"><path d="M9,1C4.589,1,1,4.589,1,9s3.589,8,8,8,8-3.589,8-8S13.411,1,9,1Zm-4,7c0-.552,.448-1,1-1s1,.448,1,1-.448,1-1,1-1-.448-1-1Zm4,6c-1.531,0-2.859-1.14-3.089-2.651-.034-.221,.039-.444,.193-.598,.151-.15,.358-.217,.572-.185,1.526,.24,3.106,.24,4.638,.001h0c.217-.032,.428,.036,.583,.189,.153,.153,.225,.373,.192,.589-.229,1.513-1.557,2.654-3.089,2.654Zm3-5c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Z"></path></g></svg>
+          </button>
+          <input type="text" id="reaction_1" name="reaction" autocomplete="off" class="form-control" placeholder="Choose an emoji..." data-emoji-picker-target="input">
+        </div>
+        <div data-emoji-picker-target="pickerContainer" class="hidden absolute z-50 mt-2 flex justify-start inset-x-0"></div>
+      </div>
+    </form>
+  </div>
+</div>
 
 <div>
   <%= button_to "Like", story_like_path(@story), method: "put", :form_class => "btn btn-outline-success" %>

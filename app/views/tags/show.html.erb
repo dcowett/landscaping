@@ -2,3 +2,4 @@
 <% @stories.each do |story| %>
   <%= render partial: "stories/story", locals: { story: story } %>
 <% end %>
+<%= link_to "Back to stories", stories_path %>

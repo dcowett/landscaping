@@ -47,3 +47,24 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 .center {
   text-align: center;
 }
+
+/* Emoji Picker Styles */
+em-emoji-picker {
+  --color-border-over: rgba(0, 0, 0, 0.1);
+  --color-border: rgba(0, 0, 0, 0.05);
+  --font-family: "Inter", sans-serif;
+  --rgb-accent: 155, 155, 155;
+
+  position: absolute;
+  z-index: 1000;
+  max-width: 400px;
+  min-width: 318px;
+  resize: horizontal;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  em-emoji-picker {
+    max-width: 80vw;
+  }
+}
