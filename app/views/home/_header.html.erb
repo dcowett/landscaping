@@ -6,9 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item"><%= link_to "Properties", properties_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to "Notes", notes_path, class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to "Stories", stories_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to "Ozone", ozone_index_path, class: 'nav-link' %></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Account</a>
@@ -28,8 +26,12 @@
             </ul>
           </li>
       <form class="d-flex" role="search", action="/properties" accept-charset="UTF-8" method="get">
+        <button class="btn btn-outline-primary" type="submit">Properties</button>
         <input class="form-control me-2" type="search" placeholder="Search Properties" aria-label="Search" name="search" id="search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+      <form class="d-flex" role="search", action="/stories" accept-charset="UTF-8" method="get">
+        <button class="btn btn-outline-primary" type="submit">Stories</button>
+        <input class="form-control me-2" type="search" placeholder="Search Stories" aria-label="Search" name="search" id="search">
       </form>
     </div>
 
