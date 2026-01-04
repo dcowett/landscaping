@@ -4,9 +4,9 @@ class PropertiesController < ApplicationController
   # GET /properties or /properties.json
   def index
     if !params[:search].nil?
-      @properties = Property.where("situs_address LIKE ?", "%" + params[:search].upcase + "%").page(params[:page]).per(100)
+      @properties = Property.where("situs_address LIKE ?", "%" + params[:search].upcase + "%").page(params[:page]).per(50)
     else
-      @properties = Property.all.order("last_sale_date DESC").page(params[:page]).per(100)
+      @properties = Property.all.order("last_sale_date DESC").page(params[:page]).per(50)
     end
 
     respond_to do |format|

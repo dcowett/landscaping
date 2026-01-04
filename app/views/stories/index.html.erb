@@ -1,9 +1,12 @@
 <% content_for :title, "Stories" %>
 <%= link_to "New story", new_story_path %>
-<h1>Stories <%= "- Showing #{ pluralize(@stories.size, 'story') }" %></h1>
-</br>
+<h3>Stories <%= "- Showing #{ pluralize(@stories.size, 'story') }" %></h3>
+<form class="d-flex" role="search", action="/stories" accept-charset="UTF-8" method="get">
+  <input class="form-control me-2" type="search" placeholder="Search Stories" aria-label="Search" name="search" id="search">
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
 <div id="stories">
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">Story Link / Description</th>
@@ -19,15 +22,17 @@
           <td><%= story.id %></td>
         </tr>
         <tr>
-          <td><%= story.description %></td>
-          <td><% unless story.tag_list.empty? %>
+          <td colspan="3">
+            <%= story.description %>
+            <% unless story.tag_list.empty? %>
+                Tags:
                 <span class="tags">
                 <%= render partial: "tags/tag", collection: story.tags %>
                 </span>
                 <% end %>
-              <% end %>
             </td>
         </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

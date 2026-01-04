@@ -12,8 +12,12 @@ class StoriesController < ApplicationController
   end
 
   def index
-    # @stories = Story.all.order("RANDOM()")
-    @stories = Story.all.order("likes_count DESC")
+    if !params[:search].nil?
+      search = params[:search].to_s.strip
+      @stories = Story.where("name ILIKE ?", "%#{search}%").page(params[:page]).per(50)
+else
+      @stories = Story.all.order("likes_count DESC").page(params[:page]).per(50)
+    end
   end
 
   def show
