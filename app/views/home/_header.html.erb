@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary-subtle">
+<nav class="navbar navbar-expand-md bg-primary-subtle">
   <div class="container">
     <%= link_to "Landscaping", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,19 +19,20 @@
                 <li class="dropdown-item"><%= link_to "Join", new_user_registration_path, class: 'nav-link' %></li>
               <% end %>
               <li class="dropdown-item"><%= link_to "About", home_about_path, class: 'nav-link' %></li>
+              <li class="dropdown-item"><%= link_to "Sandbox", home_sandbox_path, class: 'nav-link' %></li>
               <li><a class="dropdown-item disabled" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to "Import Notes", new_note_path, class: 'nav-link' %></li>
               <li class="dropdown-item"><%= link_to "List Pins", pins_path, class: 'nav-link' %></li>
             </ul>
           </li>
-      <form class="d-flex" role="search", action="/properties" accept-charset="UTF-8" method="get">
+      <form class="d-flex" role="search" action="/properties" accept-charset="UTF-8" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search Properties" aria-label="Search" name="properties_search" id="properties_search">
         <button class="btn btn-outline-primary" type="submit">Properties</button>
-        <input class="form-control me-2" type="search" placeholder="Search Properties" aria-label="Search" name="search" id="search">
       </form>
-      <form class="d-flex" role="search", action="/stories" accept-charset="UTF-8" method="get">
+      <form class="d-flex" role="search" action="/stories" accept-charset="UTF-8" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search Stories" aria-label="Search" name="stories_search" id="stories_search">
         <button class="btn btn-outline-primary" type="submit">Stories</button>
-        <input class="form-control me-2" type="search" placeholder="Search Stories" aria-label="Search" name="search" id="search">
       </form>
     </div>
 

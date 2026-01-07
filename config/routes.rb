@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get "home/index"
   get "home/about"
+  get "home/sandbox"
   get "ozone/index"
   post "zipcode" => "ozone#zipcode"
 
