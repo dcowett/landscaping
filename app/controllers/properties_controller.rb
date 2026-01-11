@@ -3,8 +3,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties or /properties.json
   def index
-    if params[:search].present?
-      term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:search].strip)}%"
+    if params[:properties_search].present?
+      term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:properties_search].strip)}%"
       @properties = Property.where("situs_address ILIKE ?", term)
                             .order(last_sale_date: :desc)
                             .page(params[:page]).per(50)

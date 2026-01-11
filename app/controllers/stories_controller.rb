@@ -12,8 +12,8 @@ class StoriesController < ApplicationController
   end
 
   def index
-    if !params[:search].nil?
-      search = params[:search].to_s.strip
+    if !params[:stories_search].nil?
+      search = params[:stories_search].to_s.strip
       @stories = Story.where("name ILIKE ?", "%#{search}%").page(params[:page]).per(50)
 else
       @stories = Story.all.order("likes_count DESC").page(params[:page]).per(50)
