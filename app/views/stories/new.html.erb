@@ -1,5 +1,12 @@
 <% content_for :title, "New story" %>
 <h1>New story</h1>
+<h4> Import Stories</h4>
+<%= form_tag import_stories_path, multipart: true do %>
+  <%= file_field_tag :file, accept: "text/csv", class: "form-control me-2" %>
+  </br>
+  <%= submit_tag "Upload Story File", class: "btn btn-outline-primary" %>
+  <% end %>
+</br>
 <%= render "form", story: @story %>
 <br>
 <div>

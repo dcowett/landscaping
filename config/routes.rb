@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     put "/stories/:id/like" => "stories#like", as: "like"
     resources :votes do
     end
+    collection do
+      post :import
+    end
   end
 
   resources :tags

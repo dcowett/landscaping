@@ -15,8 +15,13 @@ class StoriesController < ApplicationController
     if !params[:stories_search].nil?
       search = params[:stories_search].to_s.strip
       @stories = Story.where("name ILIKE ?", "%#{search}%").page(params[:page]).per(50)
-else
-      @stories = Story.all.order("likes_count DESC").page(params[:page]).per(50)
+    else
+      @stories = Story.all.order("updated_at DESC").page(params[:page]).per(50)
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Story.to_csv, filename: "stories-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv" }
     end
   end
 
@@ -67,6 +72,17 @@ else
     respond_to do |format|
       format.html { redirect_to stories_path, notice: "Story was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
+    end
+  end
+
+  #  Import CSV file of stories
+  def import
+    import_file = params[:file]
+    if import_file.present? && import_file.content_type == "text/csv"
+      Story.import(import_file)
+      redirect_to stories_path, notice: "Stories added succuessfully"
+    else
+      redirect_to new_story_path, notice: "CSV file required"
     end
   end
 
