@@ -1,0 +1,16 @@
+<tr>
+  <td><%= link_to story.name, story %></td>
+  <td><%= story.likes_count %></td>
+  <td><%= story.id %></td>
+</tr>
+<tr>
+  <td colspan="3">
+    <%= story.description %>
+    <% unless story.tag_list.empty? %>
+      Tags:
+      <span class="tags">
+        <%= render partial: "tags/tag", collection: story.tags %>
+      </span>
+    <% end %>
+  </td>
+</tr>
