@@ -1,0 +1,31 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # Use ENV['DATABASE_URL'] if provided; fallback to the Supabase Session Pooler URL template.
+  url: <%= ENV['DATABASE_URL'] || "postgres://postgres:DB_PASSWORD@pfpenawgrlhcfblmqnmi.pooler.supabase.com:5432/postgres" %>
+  # Connection pool size. Rails 8 defaults to 5; adjust for Puma workers/threads.
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # How long to wait for a connection (ms)
+  wait_timeout: <%= ENV.fetch("DB_WAIT_TIMEOUT") { 5000 } %>
+  # Statement timeout (ms). Adjust for long-running queries.
+  variables:
+    statement_timeout: <%= ENV.fetch("DB_STATEMENT_TIMEOUT") { 15000 } %>
+
+development:
+  <<: *default
+  url: <%= ENV['DEV_DATABASE_URL'] || ENV['DATABASE_URL'] || "postgres://postgres:DB_PASSWORD@pfpenawgrlhcfblmqnmi.pooler.supabase.com:5432/postgres" %>
+
+test:
+  <<: *default
+  # Prefer a separate test DB if possible (set TEST_DATABASE_URL to a different database name).
+  url: <%= ENV['TEST_DATABASE_URL'] || ENV['DATABASE_URL'] || "postgres://postgres:DB_PASSWORD@pfpenawgrlhcfblmqnmi.pooler.supabase.com:5432/postgres" %>
+
+production:
+  <<: *default
+  # In production always set DATABASE_URL (Session Pooler connection string).
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("DB_POOL") { 20 } %>
+  wait_timeout: <%= ENV.fetch("DB_WAIT_TIMEOUT") { 5000 } %>
+  variables:
+    statement_timeout: <%= ENV.fetch("DB_STATEMENT_TIMEOUT") { 15000 } %>
+    sslmode: <%= ENV.fetch("DB_SSL_MODE") { 'require' } %>
