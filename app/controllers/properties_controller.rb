@@ -6,10 +6,10 @@ class PropertiesController < ApplicationController
     if params[:properties_search].present?
       term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:properties_search].strip)}%"
       @properties = Property.where("situs_address ILIKE ?", term)
-                            .order(last_sale_date: :desc)
+                            .order(situs_address: :asc)
                             .page(params[:page]).per(50)
     else
-      @properties = Property.order(last_sale_date: :desc)
+      @properties = Property.order(last_sale_price: :desc)
                             .page(params[:page]).per(50)
     end
 

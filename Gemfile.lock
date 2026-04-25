@@ -335,7 +335,7 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails-schema (0.1.4)
+    rails-schema (0.1.7)
       activerecord (>= 5.2)
       psych (~> 4.0)
       railties (>= 5.2)
@@ -411,6 +411,7 @@ GEM
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 4.0)
       multi_json (~> 1.10)
+    smarter_csv (1.16.0)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -506,9 +507,10 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.1, >= 8.1.1)
-  rails-schema (~> 0.1.4)
+  rails-schema (~> 0.1.7)
   rubocop-rails-omakase
   selenium-webdriver
+  smarter_csv (~> 1.16)
   solid_cable
   solid_cache
   solid_queue

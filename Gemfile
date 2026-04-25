@@ -29,6 +29,7 @@ gem "devise", "~> 4.9", ">= 4.9.4"
 gem "google-cloud-storage", "~> 1.11", require: false
 gem "kaminari", "~> 1.2", ">= 1.2.2"
 gem "csv", "~> 3.3", ">= 3.3.5"
+gem "smarter_csv", "~> 1.16"
 gem "validate_url"
 gem "acts-as-taggable-on", "~> 13.0"
 
@@ -36,7 +37,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
-  gem "rails-schema", "~> 0.1.4"
+  gem "rails-schema", "~> 0.1.7"
 end
 
 group :development do
