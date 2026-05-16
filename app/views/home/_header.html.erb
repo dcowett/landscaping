@@ -7,7 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item"><%= link_to "Notes", notes_path, class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to "Ozone", ozone_index_path, class: 'nav-link' %></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Account</a>
             <ul class="dropdown-menu">
@@ -20,6 +19,7 @@
               <% end %>
               <li class="dropdown-item"><%= link_to "About", home_about_path, class: 'nav-link' %></li>
               <li class="dropdown-item"><%= link_to "Sandbox", home_sandbox_path, class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to "Ozone", ozone_index_path, class: 'nav-link' %></li>
               <li><a class="dropdown-item disabled" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to "Import Notes", new_note_path, class: 'nav-link' %></li>
