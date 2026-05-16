@@ -2,6 +2,12 @@
 <p>
   <%= link_to @story.link, @story.link %>
 </p>
+<% unless @story.tag_list.empty? %>
+  <p class="tags">
+    <strong>Tags:</strong>
+    <%= render partial: "tags/tag", collection: @story.tags %>
+  </p>
+<% end %>
 <p class="submitted_by">
   Submitted by:
   <span><%= @story.user.name %></span>
@@ -10,14 +16,26 @@
     Score: <%= @story.likes_count %>
   </span>
 </p>
-<%= button_to "👍 👏 ❤️ 💡 👎" %>
 
-<% unless @story.tag_list.empty? %>
-  <p class="tags">
-    <strong>Tags:</strong>
-    <%= render partial: "tags/tag", collection: @story.tags %>
-  </p>
-<% end %>
+<div>
+  <%= button_to "Like", story_like_path(@story), method: "put", :form_class => "btn btn-outline-success" %>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    <%= @story.likes_count %>
+    <span class="visually-hidden">number of likes</span>
+  </span>
+</div>
+
+<br>
+<ul id="vote_history">
+  <% if @story.votes.empty? %>
+    <em>No votes yet!</em>
+  <% else %>
+    <strong>Votes History:</strong>
+    <%= render partial:'votes/vote',
+        collection: @story.votes.latest %>
+  <% end %>
+</ul>
+
 <% if user_signed_in? %>
   <div id="vote_form">
     <%= form_for [@story, Vote.new], remote: true do %>
@@ -32,6 +50,9 @@
     </em>
   </p>
 <% end %>
+<br>
+
+<%= button_to "👍 👏 ❤️ 💡 👎" %>
 <br>
 
 <div class="space-y-6">
@@ -52,25 +73,6 @@
     </form>
   </div>
 </div>
-
-<div>
-  <%= button_to "Like", story_like_path(@story), method: "put", :form_class => "btn btn-outline-success" %>
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    <%= @story.likes_count %>
-    <span class="visually-hidden">number of likes</span>
-  </span>
-</div>
-
-<br>
-<ul id="vote_history">
-  <% if @story.votes.empty? %>
-    <em>No votes yet!</em>
-  <% else %>
-    <strong>Votes History:</strong>
-    <%= render partial:'votes/vote',
-        collection: @story.votes.latest %>
-  <% end %>
-</ul>
 
 <div>
   <%= link_to "Edit this story", edit_story_path(@story) %> |

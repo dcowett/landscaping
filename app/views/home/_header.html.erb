@@ -6,24 +6,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item"><%= link_to "Notes", notes_path, class: 'nav-link' %></li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Account</a>
+            <a class="nav-link dropdown-toggle" href="/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Menu</a>
             <ul class="dropdown-menu">
+              <li class="dropdown-item"><%= link_to "About", home_about_path, class: 'nav-link' %></li>
+              <li class="dropdown-item"><%= link_to "Sandbox", home_sandbox_path, class: 'nav-link' %></li>
+              <li class="dropdown-item"><%= link_to "Ozone", ozone_index_path, class: 'nav-link' %></li>
+              <li><a class="dropdown-item disabled" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to "Notes", notes_path, class: 'nav-link' %></li>
+              <li class="dropdown-item"><%= link_to "Import Notes", new_note_path, class: 'nav-link' %></li>
+              <li class="dropdown-item"><%= link_to "List Pins", pins_path, class: 'nav-link' %></li>
+              <li><hr class="dropdown-divider"></li>
               <% if user_signed_in? %>
-                <li class="dropdown-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link') %></li>
                 <li class="dropdown-item"><%= link_to "Edit Account", edit_user_registration_path, class: 'nav-link' %></li>
+                <li class="dropdown-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link') %></li>
               <% else %>
                 <li class="dropdown-item"><%= link_to "Login", new_user_session_path, class: 'nav-link' %></li>
                 <li class="dropdown-item"><%= link_to "Join", new_user_registration_path, class: 'nav-link' %></li>
               <% end %>
-              <li class="dropdown-item"><%= link_to "About", home_about_path, class: 'nav-link' %></li>
-              <li class="dropdown-item"><%= link_to "Sandbox", home_sandbox_path, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "Ozone", ozone_index_path, class: 'nav-link' %></li>
-              <li><a class="dropdown-item disabled" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li class="dropdown-item"><%= link_to "Import Notes", new_note_path, class: 'nav-link' %></li>
-              <li class="dropdown-item"><%= link_to "List Pins", pins_path, class: 'nav-link' %></li>
             </ul>
           </li>
       <form class="d-flex" role="search" action="/properties" accept-charset="UTF-8" method="get">
