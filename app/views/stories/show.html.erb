@@ -1,29 +1,58 @@
 <h1><%= @story.name %></h1>
 <p>
-  <%= link_to @story.link, @story.link %>
+  <%= link_to @story.link, @story.link, target: "_blank", rel: "noopener" %>
 </p>
-<% unless @story.tag_list.empty? %>
+<% if @story.tag_list.present? %>
   <p class="tags">
     <strong>Tags:</strong>
     <%= render partial: "tags/tag", collection: @story.tags %>
   </p>
 <% end %>
+
 <p class="submitted_by">
   Submitted by:
   <span><%= @story.user.name %></span>
   |
-  <span id="likes">
-    Score: <%= @story.likes_count %>
-  </span>
+  <span id="likes">Likes: <%= @story.likes_count %></span>
 </p>
 
-<div>
-  <%= button_to "Like", story_like_path(@story), method: "put", :form_class => "btn btn-outline-success" %>
+<%= button_to story_like_path(@story),
+      method: :put,
+      form_class: "d-inline",
+      class: "btn btn-outline-success position-relative" do %>
+  Like
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
     <%= @story.likes_count %>
     <span class="visually-hidden">number of likes</span>
   </span>
+<% end %>
+
+<div class="flex gap-2">
+  <% Story::REACTION_EMOJIS.each do |emoji| %>
+    <%= button_to emoji,
+          story_reactions_path(@story),
+          method: :post,
+          params: { reaction: { emoji: emoji } },
+          form: { data: { turbo: true } },
+          class: "btn btn-outline-secondary" %>
+  <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <% if @story.votes.exists?(user: current_user) %>
+    <button class="btn btn-outline-secondary" disabled>You already voted</button>
+  <% else %>
+    <%= form_with model: [@story, Vote.new], data: { turbo: true } do |f| %>
+      <%= f.submit "Vote for this story", class: "btn btn-outline-success" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><em>
+    You would be able to vote for this story if you were
+    <%= link_to "logged in", new_user_session_path %>!
+  </em></p>
+<% end %>
+
 
 <br>
 <ul id="vote_history">
@@ -35,24 +64,6 @@
         collection: @story.votes.latest %>
   <% end %>
 </ul>
-
-<% if user_signed_in? %>
-  <div id="vote_form">
-    <%= form_for [@story, Vote.new], remote: true do %>
-      <%= submit_tag 'Vote for this story', class:"btn btn-outline-success" %>
-	    <% end %>
-  </div>
-<% else %>
-  <p>
-    <em>
-      You would be able to vote for this story if you were
-      <%= link_to 'logged in', new_user_session_path %>!
-    </em>
-  </p>
-<% end %>
-<br>
-
-<%= button_to "👍 👏 ❤️ 💡 👎" %>
 <br>
 
 <div class="space-y-6">

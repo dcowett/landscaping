@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   post "zipcode" => "ozone#zipcode"
 
   resources :stories do
+  resources :reactions, only: [:create], controller: "story_reactions"
     put "/stories/:id/like" => "stories#like", as: "like"
     resources :votes do
     end
