@@ -1,0 +1,21 @@
+<% emojis = ["👍","👏","❤️","💡","👎"] %>
+
+<% counts = story.reactions.group(:emoji).count %>
+<% my_emojis =
+     user_signed_in? ? story.reactions.where(user: current_user).pluck(:emoji) : [] %>
+
+<div class="d-flex gap-2 flex-wrap align-items-center">
+  <% emojis.each do |emoji| %>
+    <% count = counts[emoji] || 0 %>
+    <% selected = my_emojis.include?(emoji) %>
+
+    <%= button_to story_reactions_path(story),
+          method: :post,
+          params: { reaction: { emoji: emoji } },
+          form: { data: { turbo: true } },
+          class: "btn #{selected ? "btn-secondary" : "btn-outline-secondary"}" do %>
+      <span class="me-1"><%= emoji %></span>
+      <span class="badge text-bg-light"><%= count %></span>
+    <% end %>
+  <% end %>
+</div>

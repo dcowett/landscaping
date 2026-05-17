@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@story, :reactions),
+      partial: "reactions/bar",
+      locals: { story: @story } %>
+
+<%= render_turbo_toast %>

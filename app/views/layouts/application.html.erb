@@ -28,6 +28,10 @@
   <body>
     <%= render "home/header" %>
 
+    <div id="flash">
+      <%= render "shared/flash_toast" %>
+    </div>
+
     <div class="container" >
       <% if flash[:notice] %>
         <div class="alert alert-success">

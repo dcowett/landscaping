@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_27_230231) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_17_000100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -126,6 +126,17 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_27_230231) do
     t.index ["situs_address"], name: "index_properties_on_situs_address", unique: true
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "emoji", null: false
+    t.bigint "story_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["story_id", "user_id", "emoji"], name: "index_reactions_on_story_id_and_user_id_and_emoji", unique: true
+    t.index ["story_id"], name: "index_reactions_on_story_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
   create_table "stories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
@@ -206,5 +217,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_27_230231) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "likes", "users"
   add_foreign_key "notes", "properties"
+  add_foreign_key "reactions", "stories"
+  add_foreign_key "reactions", "users"
   add_foreign_key "taggings", "tags"
 end

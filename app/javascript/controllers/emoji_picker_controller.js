@@ -3,6 +3,26 @@ import "emoji-mart"; // Use this if you installed emoji-mart with importmap
 // import { Picker } from "emoji-mart"; // Use this if you installed emoji-mart with npm or yarn
 import data from "@emoji-mart/data";
 
+
+export default class extends Controller {
+  static targets = ["input", "picker"]
+  static values = { autoSubmit: Boolean }
+
+  toggle() {
+    this.pickerTarget.classList.toggle("d-none")
+  }
+
+  pick(event) {
+    const emoji = event.currentTarget.dataset.emoji
+    this.inputTarget.value = emoji
+
+    if (this.autoSubmitValue) {
+      // IMPORTANT: requestSubmit triggers a submit event that Turbo can intercept
+      this.element.requestSubmit()
+    }
+  }
+}
+
 export default class extends Controller {
   static targets = ["input", "pickerContainer", "button"]; // Targets for the input field, picker container, and button
   static values = {

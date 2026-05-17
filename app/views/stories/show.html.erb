@@ -53,7 +53,6 @@
   </em></p>
 <% end %>
 
-
 <br>
 <ul id="vote_history">
   <% if @story.votes.empty? %>
@@ -65,6 +64,10 @@
   <% end %>
 </ul>
 <br>
+
+<div id="<%= dom_id(@story, :reactions) %>">
+  <%= render "reactions/bar", story: @story %>
+</div>
 
 <div class="space-y-6">
   <!-- Auto-submit enabled (default behavior) -->
