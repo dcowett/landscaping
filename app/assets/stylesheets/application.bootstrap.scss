@@ -48,6 +48,12 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   text-align: center;
 }
 
+.icon-credit {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
 /* Emoji Picker Styles */
 em-emoji-picker {
   --color-border-over: rgba(0, 0, 0, 0.1);
