@@ -7,12 +7,13 @@ class PropertiesController < ApplicationController
       term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:properties_search].strip)}%"
       @properties = Property.where("situs_address ILIKE ?", term)
                             .order(situs_address: :asc)
-                            .page(params[:page]).per(50)
+                            .page(params[:page]).per(40)
     else
       @properties = Property.order(last_sale_price: :desc)
-                            .page(params[:page]).per(50)
+                            .page(params[:page]).per(40)
     end
     @page_total_taxable_value = @properties.sum(&:county_taxable_value)
+    @total_taxable_value = Property.sum(:county_taxable_value)
 
     respond_to do |format|
       format.html
