@@ -12,6 +12,7 @@ class PropertiesController < ApplicationController
       @properties = Property.order(last_sale_price: :desc)
                             .page(params[:page]).per(50)
     end
+    @page_total_taxable_value = @properties.sum(&:county_taxable_value)
 
     respond_to do |format|
       format.html

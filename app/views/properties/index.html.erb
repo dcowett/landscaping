@@ -1,13 +1,15 @@
-<%= paginate @properties, class: "page-link"  %>
-<%= link_to "New property", new_property_path %>
-<% content_for :title, "Properties" %>
+<div class="d-flex justify-content-between align-items-center">
+  <%= paginate @properties %>
+  <%= link_to "New property", new_property_path, class: "btn btn-primary" %>
+</div>
 
+<% content_for :title, "Properties" %>
 <h4>Properties List</h4>
 
-<%= link_to "Export", properties_path(format: "csv"), class: "btn btn-outline-primary" %>
+<%= link_to "Export CSV", properties_path(format: :csv), class: "btn btn-outline-primary" %>
 
 <div id="properties">
-  <table class="table table-striped small">
+  <table class="table table-striped table-sm small">
     <thead>
       <tr>
         <th scope="col">Address</th>
@@ -24,23 +26,27 @@
       <% @properties.each do |property| %>
         <tr>
           <td><%= link_to property.situs_address, property %></td>
-          <td><%= if !property.last_sale_date.nil?
-                        property.last_sale_date.strftime("%F")
-              end %></td>
+          <td><%= property.last_sale_date&.strftime("%F") %></td>
           <td><%= number_to_currency(property.last_sale_price) %></td>
           <td><%= number_to_currency(property.county_taxable_value) %></td>
           <td><%= property.homestead_indicator %></td>
           <td><%= property.owner_name_line1.truncate(25) %></td>
           <td><%= property.id %></td>
-          <%if property.county_taxable_value?
-            page_taxable_value = page_taxable_value + property.county_taxable_value
-          end  %>
+          <% page_taxable_value += property.county_taxable_value.to_f %>
         </tr>
       <% end %>
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7" class="text-end">
+          <strong>(Page) Total Taxable Value: <%= number_to_currency(@page_total_taxable_value) %> </strong>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
-<h5 class="float-end" >(Page) Total Taxable Value: <%= number_to_currency(page_taxable_value) %></h5>
-
-<%= paginate @properties, class: "page-link"  %>
+<div class="d-flex justify-content-between align-items-center">
+  <%= paginate @properties %>
+  <%= link_to "New property", new_property_path, class: "btn btn-primary" %>
+</div>
