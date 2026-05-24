@@ -24,19 +24,19 @@
     <tbody>
       <% @properties.each do |property| %>
         <tr>
-          <td><%= link_to property.situs_address, property %></td>
+          <td><%= link_to property.situs_address, property_path(property) %></td>
           <td><%= property.last_sale_date&.strftime("%F") %></td>
-          <td><%= number_to_currency(property.last_sale_price) %></td>
-          <td><%= number_to_currency(property.county_taxable_value) %></td>
-          <td><%= property.homestead_indicator %></td>
-          <td><%= property.owner_name_line1.truncate(25) %></td>
+          <td><%= property.last_sale_price ? number_to_currency(property.last_sale_price) : "—" %></td>
+          <td><%= property.county_taxable_value ? number_to_currency(property.county_taxable_value) : "—" %></td>
+          <td><%= property.homestead_indicator.presence || "—" %></td>
+          <td><%= property.owner_name_line1&.truncate(25) %></td>
           <td><%= property.id %></td>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan=<%= 7 %>" class="text-end">
+        <td colspan="7" class="text-end">
           <strong>(Page) Total Taxable Value: <%= number_to_currency(@page_total_taxable_value) %> </strong>
         </td>
       </tr>
