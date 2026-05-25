@@ -1,15 +1,26 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
+  helper_method :sort_column, :sort_direction
+
+  SORTABLE_COLUMNS = {
+    "address"        => "situs_address",
+    "last_sale_date" => "last_sale_date",
+    "sale_price"     => "last_sale_price",
+    "taxable_value"  => "county_taxable_value",
+    "homestead"      => "homestead_indicator",
+    "owner"          => "owner_name_line1",
+    "id"             => "id"
+  }.freeze
 
   # GET /properties or /properties.json
   def index
     if params[:properties_search].present?
       term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:properties_search].strip)}%"
       @properties = Property.where("situs_address ILIKE ?", term)
-                            .order(situs_address: :asc)
+                            .order("#{sort_column} #{sort_direction}") # safe because sort_column is whitelisted
                             .page(params[:page]).per(40)
     else
-      @properties = Property.order(last_sale_price: :desc)
+      @properties = Property.order("#{sort_column} #{sort_direction}") # safe because sort_column is whitelisted
                             .page(params[:page]).per(40)
     end
     @page_total_taxable_value = @properties.sum(&:county_taxable_value)
@@ -86,6 +97,15 @@ class PropertiesController < ApplicationController
   end
 
   private
+
+    def sort_column
+      SORTABLE_COLUMNS.fetch(params[:sort].to_s, "id")
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_property
       @property = Property.find(params[:id])

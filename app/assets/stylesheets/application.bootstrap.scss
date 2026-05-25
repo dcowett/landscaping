@@ -55,6 +55,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   text-align: center;
 }
 
+.sort { text-decoration: none; }
+.sort-asc::after { content: " ▲"; font-size: 0.8em; }
+.sort-desc::after { content: " ▼"; font-size: 0.8em; }
+
 /* Emoji Picker Styles */
 em-emoji-picker {
   --color-border-over: rgba(0, 0, 0, 0.1);

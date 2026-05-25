@@ -10,13 +10,13 @@
     <caption class="visually-hidden">Properties list</caption>
     <thead>
       <tr>
-        <th scope="col">Address</th>
-        <th scope="col">Last Sale Date</th>
-        <th scope="col">Sale Price</th>
-        <th scope="col">Taxable Value</th>
-        <th scope="col">Homestead</th>
-        <th scope="col">Owner</th>
-        <th scope="col">ID</th>
+        <th scope="col"><%= sortable_header("Address", :address) %></th>
+        <th scope="col"><%= sortable_header("Last Sale Date", :last_sale_date) %></th>
+        <th scope="col"><%= sortable_header("Sale Price", :sale_price) %></th>
+        <th scope="col"><%= sortable_header("Taxable Value", :taxable_value) %></th>
+        <th scope="col"><%= sortable_header("Homestead", :homestead) %></th>
+        <th scope="col"><%= sortable_header("Owner", :owner) %></th>
+        <th scope="col"><%= sortable_header("ID", :id) %></th>
       </tr>
     </thead>
     <tbody>
