@@ -2,6 +2,12 @@ class StoriesController < ApplicationController
   # before_action :authenticate_user!, only: %i[ new create ]
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_story, only: %i[ show edit update destroy ]
+  SORTABLE_COLUMNS = {
+    "name"           => "name",
+    "description"    => "description",
+    "likes_count"    => "likes_count",
+    "id"             => "id"
+  }.freeze
 
   def like
     @story = Story.find(params[:id])
@@ -14,9 +20,13 @@ class StoriesController < ApplicationController
   def index
     if !params[:stories_search].nil?
       search = params[:stories_search].to_s.strip
-      @stories = Story.where("name ILIKE ?", "%#{search}%").page(params[:page]).per(50)
+      @stories = Story.where("name ILIKE ?", "%#{search}%")
+                      .order("#{sort_column} #{sort_direction}")
+                      .page(params[:page]).per(50)
     else
-      @stories = Story.all.order("updated_at DESC").page(params[:page]).per(50)
+      @stories = Story.all
+                      .order("#{sort_column} #{sort_direction}")
+                      .page(params[:page]).per(50)
     end
 
     respond_to do |format|
@@ -87,6 +97,14 @@ class StoriesController < ApplicationController
   end
 
   private
+
+    def sort_column
+      SORTABLE_COLUMNS.fetch(params[:sort].to_s, "id")
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_story
