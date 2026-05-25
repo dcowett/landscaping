@@ -1,0 +1,5 @@
+<!-- app/views/properties/_toolbar.html.erb -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <%= paginate @properties %>
+  <%= link_to "New property", new_property_path, class: "btn btn-primary" %>
+</div>

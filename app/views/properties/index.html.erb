@@ -1,7 +1,4 @@
-<div class="d-flex justify-content-between align-items-center">
-  <%= paginate @properties %>
-  <%= link_to "New property", new_property_path, class: "btn btn-primary" %>
-</div>
+<%= render "toolbar" %>
 
 <% content_for :title, "Properties" %>
 <h4>Properties List</h4>
@@ -10,6 +7,7 @@
 
 <div id="properties">
   <table class="table table-striped table-sm small">
+    <caption class="visually-hidden">Properties list</caption>
     <thead>
       <tr>
         <th scope="col">Address</th>
@@ -26,8 +24,8 @@
         <tr>
           <td><%= link_to property.situs_address, property_path(property) %></td>
           <td><%= property.last_sale_date&.strftime("%F") %></td>
-          <td><%= property.last_sale_price ? number_to_currency(property.last_sale_price) : "—" %></td>
-          <td><%= property.county_taxable_value ? number_to_currency(property.county_taxable_value) : "—" %></td>
+          <td><%= currency_or_dash(property.last_sale_price) %></td>
+          <td><%= currency_or_dash(property.county_taxable_value) %></td>
           <td><%= property.homestead_indicator.presence || "—" %></td>
           <td><%= property.owner_name_line1&.truncate(25) %></td>
           <td><%= property.id %></td>
@@ -44,7 +42,4 @@
   </table>
 </div>
 
-<div class="d-flex justify-content-between align-items-center">
-  <%= paginate @properties %>
-  <%= link_to "New property", new_property_path, class: "btn btn-primary" %>
-</div>
+<%= render "toolbar" %>
