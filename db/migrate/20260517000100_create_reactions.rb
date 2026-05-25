@@ -9,6 +9,6 @@ class CreateReactions < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :reactions, [:story_id, :user_id, :emoji], unique: true
+    add_index :reactions, [ :story_id, :user_id, :emoji ], unique: true
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notes, only: [:index, :new] do
+  resources :notes, only: [ :index, :new ] do
     collection do
       post :import
     end
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   post "zipcode" => "ozone#zipcode"
 
   resources :stories do
-    resources :reactions, only: [:create]
+    resources :reactions, only: [ :create ]
 
     put "/stories/:id/like" => "stories#like", as: "like"
 
