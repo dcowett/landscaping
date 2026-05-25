@@ -5,8 +5,7 @@ class Story < ApplicationRecord
   validates :link, url: true
   has_many :reactions, dependent: :destroy
   has_many :votes, dependent: :destroy do
-
-  REACTION_EMOJIS = ["👍","👏","❤️","💡","👎"].freeze
+  REACTION_EMOJIS = [ "👍", "👏", "❤️", "💡", "👎" ].freeze
 
     def latest
       order("id DESC").limit(5)

@@ -4,5 +4,5 @@ class Reaction < ApplicationRecord
   belongs_to :user
 
   validates :emoji, presence: true
-  validates :emoji, uniqueness: { scope: [:story_id, :user_id] }
+  validates :emoji, uniqueness: { scope: [ :story_id, :user_id ] }
 end

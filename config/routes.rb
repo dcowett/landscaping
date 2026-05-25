@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "votes/create"
 
   resources :properties do
-    resources :notes, except: [:index], controller: "properties/notes"
+    resources :notes, except: [ :index ], controller: "properties/notes"
 
     collection do
       post :import
