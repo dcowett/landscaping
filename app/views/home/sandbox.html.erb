@@ -1,49 +1,64 @@
-Navbar Example
+<h4>Sandbox</h4>
+<p>This page is for testing out new ideas and code snippets. It is not meant to be a polished or final product. Feel free to experiment and break things!</p>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
   <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Brand</a>
 
-    <div class="collapse navbar-collapse col-lg-6 col-md-6">
-      <ul class="nav navbar-nav  navbar-left">
-        <li><a href="">Home</a></li>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="mainNav">
+
+      <!-- FIRST ROW: left nav -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
       </ul>
-    </div>
 
-    <div class="collapse navbar-collapse navbar-right col-lg-6 col-md-6">
-      <div class="dropdown">
-        <button id="userMenu" class="btn dropdown-toggle btn-primary" type="button" data-toggle="dropdown">
-          <span>User</span> <span class="caret userButton"></span>
-        </button>
+      <!-- FIRST ROW: right dropdown -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#"
+             id="userDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">View Details</a></li>
+            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
 
-        <ul class="dropdown-menu" role="menu" aria-labelledby="userMenu">
-          <li role="presentation"><a href="#" tabindex="-1" role="menuitem">View Details</a></li>
-          <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Edit</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Logout</a></li>
-        </ul>
-      </div>
-    </div>
+      <!-- SECOND ROW: full-width justified links -->
+      <ul class="navbar-nav w-100 flex-lg-row justify-content-lg-between border-top pt-2 mt-2">
+        <li class="nav-item flex-lg-fill text-lg-center">
+          <a class="nav-link" href="#">Reports</a>
+        </li>
+        <li class="nav-item flex-lg-fill text-lg-center">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item flex-lg-fill text-lg-center">
+          <a class="nav-link" href="#">Messages</a>
+        </li>
+        <li class="nav-item flex-lg-fill text-lg-center">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item flex-lg-fill text-lg-center">
+          <a class="nav-link" href="#">Request Quote</a>
+        </li>
+      </ul>
 
-    <div class="navbar-header">
-      <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNav">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul id="navlist" class="nav nav-justified">
-          <li><a href="#">Reports</a></li>
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Request Quote</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 </nav>
