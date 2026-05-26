@@ -36,13 +36,18 @@
             </ul>
           </li>
 
+        <%= search_form_for @properties_q,
+          url: properties_path,
+          method: :get,
+          html: { class: "d-flex", role: "search" } do |f| %>
 
-        <form class="d-flex" role="search" action="/properties"        accept-charset="UTF-8" method="get">
-          <input class="form-control me-2" type="search"
-          placeholder="Address OR Owner" aria-label="Search" name="properties_search" id="properties_search">
-          <button class="btn btn-outline-primary" type="submit">Properties</button>
-        </form>
+          <%= f.search_field :situs_address_or_owner_name_line1_cont,
+          class: "form-control me-2",
+          placeholder: "Search Properties",
+          aria: { label: "Search properties" } %>
 
+          <%= f.submit "Properties", class: "btn btn-outline-primary" %>
+        <% end %>
 
       <form class="d-flex" role="search" action="/stories" accept-charset="UTF-8" method="get">
         <input class="form-control me-2" type="search" placeholder="Search Stories" aria-label="Search" name="stories_search" id="stories_search">
