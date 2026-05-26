@@ -21,8 +21,6 @@ module ApplicationHelper
 
   # Source - https://stackoverflow.com/a/24131080
   # Posted by sumizome, Retrieved 2026-05-26, License - CC BY-SA 3.0
-
   def comment
   end
-
 end
