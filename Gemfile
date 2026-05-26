@@ -32,7 +32,7 @@ gem "csv", "~> 3.3", ">= 3.3.5"
 gem "smarter_csv", "~> 1.16"
 gem "validate_url"
 gem "acts-as-taggable-on", "~> 13.0"
-gem 'ransack', "~> 4.4", ">= 4.4.1"
+gem "ransack", "~> 4.4", ">= 4.4.1"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
