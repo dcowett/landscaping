@@ -2,12 +2,27 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
   helper_method :sort_column, :sort_direction
 
+  SORTABLE_COLUMNS = {
+    "address"        => "situs_address",
+    "last_sale_date" => "last_sale_date",
+    "sale_price"     => "last_sale_price",
+    "taxable_value"  => "county_taxable_value",
+    "homestead"      => "homestead_indicator",
+    "owner"          => "owner_name_line1",
+    "id"             => "id"
+  }.freeze
+
   # GET /properties or /properties.json
   def index
-    @q = Property.ransack(params[:q])
-    @q.sorts = "id asc" if @q.sorts.empty?
-    @properties = @q.result(distinct: true).page(params[:page]).per(40)
-
+    if params[:properties_search].present?
+      term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:properties_search].strip)}%"
+      @properties = Property.where("situs_address ILIKE ?", term)
+                            .order("#{sort_column} #{sort_direction}")
+                            .page(params[:page]).per(40)
+    else
+      @properties = Property.order("#{sort_column} #{sort_direction}")
+                            .page(params[:page]).per(40)
+    end
     @page_total_taxable_value = @properties.sum(&:county_taxable_value)
     @total_taxable_value = Property.sum(:county_taxable_value)
 

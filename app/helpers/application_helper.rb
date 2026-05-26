@@ -18,4 +18,11 @@ module ApplicationHelper
             request.query_parameters.merge(sort: column, direction: direction),
             class: css_class
   end
+
+  # Source - https://stackoverflow.com/a/24131080
+  # Posted by sumizome, Retrieved 2026-05-26, License - CC BY-SA 3.0
+
+  def comment
+  end
+
 end
