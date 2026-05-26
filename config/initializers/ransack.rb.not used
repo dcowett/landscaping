@@ -1,0 +1,24 @@
+Ransack.configure do |c|
+  # Configure the name of the search key for activating advanced search form builders.
+  # The default is :q, which means that a params[:q] will be used for searching.
+  # c.search_key = :q
+
+  # Configure the name of the sort key for activating advanced search form builders.
+  # The default is :s, which means that a params[:s] will be used for sorting.
+  # c.sort_key = :s
+
+  # Configure the name of the groupings key for activating advanced search form builders.
+  # The default is :g, which means that a params[:g] will be used for grouping.
+  # c.groupings_key = :g
+
+  # Configure the default predicate when searching against a string type.
+  # The default is cont, which means that an attribute like name will generate a condition like
+  # name_cont: 'foo' which translates to "name LIKE '%foo%'"
+  # c.default_predicates = { string: :cont }
+
+  c.custom_arrows = {
+    up_arrow: '<i class="custom-up-arrow-icon"></i>',
+    down_arrow: 'U+02193',
+    default_arrow: '<i class="default-arrow-icon"></i>'
+  }
+end
