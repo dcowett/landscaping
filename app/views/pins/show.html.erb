@@ -10,10 +10,13 @@
           <% end %>
 
         <div class="card-body">
+          <p>
+            <strong>Property:</strong>
+            <%= link_to @pin.property.situs_address, property_path(@pin.property) if @pin.property %>
+          </p>
           <%= @pin.description %>
           </br>
           <%= @pin.user.name %>
-
           <div>
             <%= link_to "Edit this pin", edit_pin_path(@pin) %> |
             <%= link_to "Back to pins", pins_path %>
