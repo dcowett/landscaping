@@ -1,3 +1,16 @@
+<% current = params[:filter] %>
+
+<div class="mb-3">
+  <%= link_to "All Pins", pins_path,
+      class: "btn #{current.nil? ? 'btn-primary' : 'btn-outline-secondary'}" %>
+
+  <%= link_to "With Property", pins_path(filter: "with_property"),
+      class: "btn #{current == 'with_property' ? 'btn-primary' : 'btn-outline-secondary'}" %>
+
+  <%= link_to "No Property", pins_path(filter: "no_property"),
+      class: "btn #{current == 'no_property' ? 'btn-primary' : 'btn-outline-secondary'}" %>
+</div>
+
 <%= stylesheet_link_tag "masonary" %>
 <h1>Pins</h1>
 <%= link_to "New pin", new_pin_path %>

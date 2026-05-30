@@ -12,7 +12,11 @@
         <div class="card-body">
           <p>
             <strong>Property:</strong>
-            <%= link_to @pin.property.situs_address, property_path(@pin.property) if @pin.property %>
+            <% if @pin.property %>
+              <%= link_to @pin.property.situs_address, property_path(@pin.property) %>
+            <% else %>
+              No property
+            <% end %>
           </p>
           <%= @pin.description %>
           </br>

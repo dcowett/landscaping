@@ -5,7 +5,15 @@ class PinsController < ApplicationController
 
   # GET /pins or /pins.json
   def index
-    @pins = Pin.all.order("created_at DESC").page(params[:page]).per(8)
+    @pins = Pin.includes(:user).order(created_at: :desc)
+
+    if params[:filter] == "no_property"
+      @pins = @pins.without_property
+    elsif params[:filter] == "with_property"
+      @pins = @pins.with_property
+    end
+
+    @pins = @pins.page(params[:page])
   end
 
   # GET /pins/1 or /pins/1.json

@@ -13,7 +13,11 @@
 
   <div>
     <%= form.label :property_id, "Property" %><br>
-    <%= form.collection_select :property_id, Property.order(:situs_address), :id, :situs_address, prompt: "Select a property" %>
+    <%= form.collection_select :property_id,
+      Property.order(:situs_address),
+      :id,
+      :situs_address,
+      include_blank: "No property (standalone pin)" %>
   </div>
 
   <div class="form-group">
