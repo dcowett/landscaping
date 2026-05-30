@@ -1,3 +1,4 @@
+<%= paginate @pins, params: { filter: params[:filter] } %>
 <% current = params[:filter] %>
 
 <div class="mb-3">
@@ -14,21 +15,19 @@
 <%= stylesheet_link_tag "masonary" %>
 <h1>Pins</h1>
 <%= link_to "New pin", new_pin_path %>
-<%= paginate @pins, class: "page-link"  %>
 
 <% content_for :title, "Pins" %>
 
-    <% if @pins.exists? %>
+    <% if @pins.any? %>
         <div class="masonry">
           <% @pins.each do |pin| %>
             <div class="masonry-item masonry-content center"></br>
-              <% if pin.image.attached? %>
-                <%= image_tag pin.image.variant(resize_to_limit: [ 200, 200 ]) %>
-                <% else %>
-                <%= image_tag "default_image.png" %>
-              <% end %>
-              </br>
-
+              <%= image_tag(
+                (pin.image.attached? ? pin.image.variant(resize_to_limit: [200,200]) : "default_image.png"),
+                loading: "lazy",
+                class: "img-fluid rounded"
+                ) %>
+              <br>
               <%= link_to "Show this pin", pin %>
               <% if pin.property %>
                 <span class="badge bg-success">Property</span>
@@ -39,5 +38,5 @@
           <% end %>
         </div>
       <% end %>
-<%= paginate @pins, class: "page-link"  %>
+<%= paginate @pins, params: { filter: params[:filter] } %>
 </div>
