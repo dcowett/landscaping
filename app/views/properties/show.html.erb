@@ -1,16 +1,33 @@
-<h3>Show property</h3>
+<h4><%= @property.situs_address %></h4>
 <p>
-    <h4><strong>Address:</strong>
-    <%= @property.situs_address %></h4>
-    <strong>ID:</strong>
-    <%= @property.id %>
-  </p>
-  <p>
-    <strong>Owner:</strong>
+  <strong>ID:</strong>
+  <%= @property.id %>,
+    <strong>Owner(s):</strong>
     <%= @property.owner_name_line1 %>
     <%= @property.owner_name_line2 %>
-  </p>
-  <%= link_to "Add new note", new_property_note_path(@property), class: "btn btn-outline-success pull-right" %>
+</p>
+<%= link_to "Add note", new_property_note_path(@property), class: "btn btn-outline-success pull-right" %>
+
+<%= link_to "Add Pin", new_pin_path(property_id: @property.id), class: "btn btn-outline-primary" %>
+
+<% if @pins.any? %>
+  <div class="masonry">
+    <% @pins.each do |pin| %>
+      <div class="masonry-item masonry-content center"><br>
+        <% if pin.image.attached? %>
+          <%= image_tag pin.image.variant(resize_to_limit: [200, 200]) %>
+        <% else %>
+          <%= image_tag "default_image.png" %>
+        <% end %>
+        <br>
+        <%= link_to "Show this pin", pin_path(pin) %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No pins yet for this property.</p>
+<% end %>
+
   <div class="media">
     <div class="media-body">
       <table class="table table-striped">

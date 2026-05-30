@@ -15,7 +15,7 @@ class PinsController < ApplicationController
 
   # GET /pins/new
   def new
-    @pin = current_user.pins.build
+    @pin = current_user.pins.build(property_id: params[ :property_id ])
   end
 
   # GET /pins/1/edit
