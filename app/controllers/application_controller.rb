@@ -24,5 +24,4 @@ class ApplicationController < ActionController::Base
   def set_ransack_queries
     @properties_q = Property.ransack(params[:q])
   end
-
 end

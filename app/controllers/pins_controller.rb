@@ -23,7 +23,7 @@ class PinsController < ApplicationController
 
   # GET /pins/new
   def new
-    @pin = current_user.pins.build(property_id: params[ :property_id ])
+    @pin = current_user.pins.build(property_id: params[:property_id])
   end
 
   # GET /pins/1/edit
@@ -83,6 +83,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit( :description, :image, :property_id )
+      params.require(:pin).permit(:description, :image, :property_id)
     end
 end
