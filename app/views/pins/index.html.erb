@@ -12,7 +12,6 @@
       class: "btn #{current == 'no_property' ? 'btn-primary' : 'btn-outline-secondary'}" %>
 </div>
 
-<%= stylesheet_link_tag "masonary" %>
 <h1>Pins</h1>
 <%= link_to "New pin", new_pin_path %>
 
@@ -30,13 +29,16 @@
               <br>
               <%= link_to "Show this pin", pin %>
               <% if pin.property %>
-                <span class="badge bg-success">Property</span>
-              <% else %>
+                <span class="badge bg-success">
+                  <%= link_to pin.property.situs_address, property_path(pin.property), class: "text-white text-decoration-none" %>
+                </span>
+                <% else %>
                 <span class="badge bg-secondary">Standalone</span>
               <% end %>
             </div>
           <% end %>
         </div>
+      <% else %>
+          <p class="text-muted">No pins found for this filter.</p>
       <% end %>
 <%= paginate @pins, params: { filter: params[:filter] } %>
-</div>
