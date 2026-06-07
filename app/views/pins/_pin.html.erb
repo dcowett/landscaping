@@ -1,15 +1,19 @@
-<div id="<%= dom_id pin %>">
+<div class="masonry-item masonry-content center">
+  <%= image_tag(
+    (pin.image.attached? ? pin.image.variant(resize_to_limit: [200,200]) : "default_image.png"),
+    loading: "lazy",
+    class: "img-fluid rounded"
+  ) %>
 
-<p>
-    <% if pin.image.attached? %>
-      <%= image_tag pin.image.variant(resize_to_limit: [ 200, 200 ]) %>
-      <% else %>
-      <%= image_tag "default_image.png" %>
-    <% end %>
-    </br>
-    <%= pin.description %>
-    </br>
-    <%= pin.user.name %>
-  </p>
+  <%= link_to "Show this pin", pin %>
 
+  <% if pin.property %>
+    <span class="badge bg-success">
+      <%= link_to pin.property.situs_address,
+          property_path(pin.property),
+          class: "text-white text-decoration-none" %>
+    </span>
+  <% else %>
+    <span class="badge bg-secondary">Standalone</span>
+  <% end %>
 </div>

@@ -1,21 +1,15 @@
+<% content_for :title, "Pins" %>
 <%= paginate @pins, params: { filter: params[:filter] } %>
-<% current = params[:filter] %>
+<% current = @current_filter %>
 
 <div class="mb-3">
-  <%= link_to "All Pins", pins_path,
-      class: "btn #{current.nil? ? 'btn-primary' : 'btn-outline-secondary'}" %>
-
-  <%= link_to "With Property", pins_path(filter: "with_property"),
-      class: "btn #{current == 'with_property' ? 'btn-primary' : 'btn-outline-secondary'}" %>
-
-  <%= link_to "No Property", pins_path(filter: "no_property"),
-      class: "btn #{current == 'no_property' ? 'btn-primary' : 'btn-outline-secondary'}" %>
+  <%= filter_button("All Pins", nil, current) %>
+  <%= filter_button("With Property", "with_property", current) %>
+  <%= filter_button("No Property", "no_property", current) %>
 </div>
 
 <h1>Pins</h1>
 <%= link_to "New pin", new_pin_path %>
-
-<% content_for :title, "Pins" %>
 
     <% if @pins.any? %>
         <div class="masonry">

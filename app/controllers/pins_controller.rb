@@ -5,6 +5,7 @@ class PinsController < ApplicationController
 
   # GET /pins or /pins.json
   def index
+    @current_filter = params[:filter]
     @pins = Pin.includes(:user).order(created_at: :desc)
 
     if params[:filter] == "no_property"
