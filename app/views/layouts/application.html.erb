@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Landscaping" %></title>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <title>
+      <%= content_for?(:title) ? "#{yield(:title)} | Landscaping" : "Landscaping Records" %>
+    </title>
+
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Landscaping committee records' %>">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,11 +27,13 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "masonary", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= render "home/header" %>
-    <div id="flash">
+
+    <div id="flash" class="container" data-turbo-temporary>
       <%= render "shared/flash_toast" %>
     </div>
 
@@ -45,15 +56,15 @@
     </div>
 
     <div class="icon-credit">
-      © Copyright David Cowett Design 2026. All rights reserved.
+      © Copyright David Cowett Design <%= Time.current.year %>. All rights reserved.
       <br>
 
       <!--
-      <a target="_blank" href="https://icons8.com/icon/UHfmZYAxoZ3s/palms">Palms</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/UHfmZYAxoZ3s/palms">Palms</a>
       <a href="https://www.flaticon.com/free-icons/palm-tree" title="palm tree icons">Palm tree icons created by Karyative - Flaticon</a>
       -->
 
-      <a target="_blank" href="https://icons8.com/icon/Rg2lnmjyLLXi/grass">Grass</a> and <a target="_blank" href="https://icons8.com/icon/16529/garden-gloves">Garden Gloves</a> icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/Rg2lnmjyLLXi/grass">Grass</a> and <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/16529/garden-gloves">Garden Gloves</a> icons by <a target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a>
     </div>
   </body>
 </html>

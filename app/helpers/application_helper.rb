@@ -23,4 +23,13 @@ module ApplicationHelper
   # Posted by sumizome, Retrieved 2026-05-26, License - CC BY-SA 3.0
   def comment
   end
+
+  def bootstrap_class_for(flash_type)
+    case flash_type.to_sym
+    when :notice then "success"
+    when :alert  then "warning"
+    when :error  then "danger"
+    else "info"
+    end
+  end
 end

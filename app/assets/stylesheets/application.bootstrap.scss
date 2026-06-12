@@ -79,3 +79,33 @@ em-emoji-picker {
     max-width: 80vw;
   }
 }
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  width: 600px;
+  margin: 10% auto;
+  padding: 1rem;
+  border-radius: 8px;
+}

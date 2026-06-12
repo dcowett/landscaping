@@ -1,17 +1,21 @@
-<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+<div class="toast-container position-fixed end-0 p-3"
+     style="top: 60px; z-index: 1080;">
   <% flash.each do |type, message| %>
-    <% bs_type =
-         case type.to_sym
-         when :notice then "success"
-         when :alert  then "danger"
-         else "info"
-         end %>
+    <% bs_type = bootstrap_class_for(type) %>
 
     <div class="toast align-items-center text-bg-<%= bs_type %> border-0 show mb-2" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body"><%= message %></div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+     <div class="toast-body">
+        <% icon = case type.to_sym
+                  when :notice then "✅"
+                  when :alert  then "⚠️"
+                  when :error  then "❌"
+                  else "ℹ️"
+                  end %>
+
+        <span class="me-2"><%= icon %></span>
+        <%= sanitize(message) %>
       </div>
     </div>
   <% end %>
 </div>
+<% flash.discard %>

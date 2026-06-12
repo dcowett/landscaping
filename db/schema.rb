@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_30_190314) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_10_092442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -106,6 +106,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_30_190314) do
     t.decimal "last_sale_price"
     t.string "last_sale_qualified"
     t.string "last_sale_vori"
+    t.float "latitude"
+    t.float "longitude"
     t.string "mailing_address_line1"
     t.string "mailing_address_line2"
     t.string "mailing_city"
