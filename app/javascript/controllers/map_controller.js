@@ -2,18 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  connect() {
-    console.log("✅ map controller connected")
-  }
-
-  open(event) {
-    console.log("✅ click event fired")
-    alert("clicked")
-  }
-
-  close() {}
-}
-
   open(event) {
     event.preventDefault()
 

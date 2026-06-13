@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "tags/show"
-  get "votes/create"
 
   resources :properties do
     resources :notes, except: [ :index ], controller: "properties/notes"
@@ -24,7 +22,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "/users/sign_out" => "devise/sessions#destroy"
+    get "/users/sign_out", to: "devise/sessions#destroy"
   end
 
   get "home/index"
@@ -32,14 +30,15 @@ Rails.application.routes.draw do
   get "home/sandbox"
 
   get "ozone/index"
-  post "zipcode" => "ozone#zipcode"
+  post "zipcode", to: "ozone#zipcode"
 
-  resources :stories do
-    resources :reactions, only: [ :create ]
-
-    put "/stories/:id/like" => "stories#like", as: "like"
-
+resources :stories do
+    resources :reactions, only: [:create]
     resources :votes
+
+    member do
+      put :like
+    end
 
     collection do
       post :import
@@ -48,7 +47,7 @@ Rails.application.routes.draw do
 
   resources :tags   # ✅ only once
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "up", to: "rails/health#show", as: :rails_health_check
 
   root to: "home#index"
 end
