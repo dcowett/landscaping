@@ -8,13 +8,16 @@
     <strong>Owner(s):</strong>
     <%= @property.owner_name_line1 %>
     <%= @property.owner_name_line2 %>
-</p>
+    <br><br><strong>Full_Address:</strong>
+    <%= @property.full_address %>
+    <strong>Lat/Long:</strong>
+    <%= @property.latitude.inspect %>
+     /
+    <%= @property.longitude.inspect %>
+  </p>
 <%= link_to "Add note", new_property_note_path(@property), class: "btn btn-outline-success pull-right" %>
 
 <%= link_to "Add Pin", new_pin_path(property_id: @property.id), class: "btn btn-outline-primary" %>
-
-<%= @property.latitude.inspect %>
-<%= @property.longitude.inspect %>
 
 <%= link_to "View Map", "#",
     class: "btn btn-outline-info",

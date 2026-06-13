@@ -8,7 +8,7 @@ class Property < ApplicationRecord
   after_validation :geocode, if: :should_geocode?
 
   def full_address
-    [situs_address, city, state, zip].compact.join(", ")
+    [situs_address, situs_postal_city, situs_postal_zip].compact.join(", ")
   end
 
   def self.ransackable_attributes(auth_object = nil)
