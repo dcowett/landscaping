@@ -8,7 +8,7 @@ class Property < ApplicationRecord
   after_validation :geocode, if: :should_geocode?
 
   def full_address
-    [situs_address, situs_postal_city, situs_postal_zip, "US"].compact.join(", ")
+    [situs_address, situs_postal_city, "FL", situs_postal_zip, "USA"].compact.join(" ")
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -26,7 +26,8 @@ class Property < ApplicationRecord
   end
 
   def uppercase_address
-    situs_address.upcase!
+    self.situs_address = situs_address&.upcase
+    self.situs_postal_city = situs_postal_city&.upcase
   end
 
   def self.to_csv
@@ -41,7 +42,24 @@ class Property < ApplicationRecord
   private
 
   def should_geocode?
-    full_address.present? && (latitude.blank? || longitude.blank?)
+    return false if full_address.blank?
+
+    latitude.blank? ||
+      longitude.blank? ||
+      address_changed?
+  end
+
+  def address_changed?
+    will_save_change_to_situs_address? ||
+    will_save_change_to_situs_postal_city? ||
+    will_save_change_to_situs_postal_zip?
+  end
+
+  def clear_coordinates_if_address_changed
+    if address_changed?
+      self.latitude = nil
+      self.longitude = nil
+    end
   end
 
 end
