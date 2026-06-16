@@ -1,14 +1,20 @@
 class Property < ApplicationRecord
   validates :situs_address, presence: true, uniqueness: true
-  before_validation :uppercase_address
+  before_validation :normalize_address_fields
+
   has_many :notes, dependent: :destroy
   has_many :pins, dependent: :destroy
 
-  geocoded_by :full_address
-  after_validation :geocode, if: :should_geocode?
+  after_commit :geocode_with_geocodio, on: [:create, :update], if: :should_geocode_after_commit?
 
   def full_address
-    [situs_address, situs_postal_city, "FL", situs_postal_zip, "USA"].compact.join(" ")
+    [
+      situs_address,
+      situs_postal_city,
+      "FL",
+      situs_postal_zip,
+      "USA"
+    ].compact.join(", ")
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -41,25 +47,22 @@ class Property < ApplicationRecord
 
   private
 
-  def should_geocode?
-    return false if full_address.blank?
+  def normalize_address_fields
+    self.situs_address = situs_address.to_s.strip.gsub(/\s+/, " ").presence
+    self.situs_postal_city = situs_postal_city.to_s.strip.gsub(/\s+/, " ").presence
+    self.situs_postal_zip = situs_postal_zip.to_s.strip.presence
+  end
 
+  def should_geocode_after_commit?
     latitude.blank? ||
       longitude.blank? ||
-      address_changed?
+      previous_changes.key?("situs_address") ||
+      previous_changes.key?("situs_postal_city") ||
+      previous_changes.key?("situs_postal_zip")
   end
 
-  def address_changed?
-    will_save_change_to_situs_address? ||
-    will_save_change_to_situs_postal_city? ||
-    will_save_change_to_situs_postal_zip?
-  end
-
-  def clear_coordinates_if_address_changed
-    if address_changed?
-      self.latitude = nil
-      self.longitude = nil
-    end
+  def geocode_with_geocodio
+    PropertyGeocodioService.new(self).call
   end
 
 end

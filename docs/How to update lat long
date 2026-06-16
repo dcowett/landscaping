@@ -1,0 +1,16 @@
+# run in rails console
+success_count = 0
+failure_count = 0
+
+Property.find_each do |property|
+  result = PropertyGeocodioService.new(property).call
+  if result.success?
+    success_count += 1
+    puts "✓ #{property.id}: #{result.latitude}, #{result.longitude}"
+  else
+    failure_count += 1
+    puts "✗ #{property.id}: #{result.error}"
+  end
+end
+
+puts "\nDone — #{success_count} succeeded, #{failure_count} failed"
