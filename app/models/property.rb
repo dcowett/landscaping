@@ -7,16 +7,6 @@ class Property < ApplicationRecord
 
   after_commit :geocode_with_geocodio, on: [:create, :update], if: :should_geocode_after_commit?
 
-  def full_address
-    [
-      situs_address,
-      situs_postal_city,
-      "FL",
-      situs_postal_zip,
-      "USA"
-    ].compact.join(", ")
-  end
-
   def self.ransackable_attributes(auth_object = nil)
     [ "homestead_indicator", "id", "just_value", "land_acreage", "land_use_code", "land_use_desc", "last_sale_date", "last_sale_price", "last_sale_vori",  "mailing_country", "mailing_postal_code", "mailing_state", "neighborhood_code", "neighborhood_name", "owner_name_line1", "owner_name_line2", "parid", "situs_address" ]
   end

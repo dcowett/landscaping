@@ -80,11 +80,6 @@ em-emoji-picker {
   }
 }
 
-#map {
-  height: 400px;
-  width: 100%;
-}
-
 /* ✅ Modal wrapper */
 .modal {
   position: fixed;
@@ -108,7 +103,7 @@ em-emoji-picker {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
 }
@@ -122,7 +117,7 @@ em-emoji-picker {
   max-width: 700px;
   padding: 20px;
   z-index: 1001;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   animation: modalFadeIn 0.2s ease-out;
 }
 

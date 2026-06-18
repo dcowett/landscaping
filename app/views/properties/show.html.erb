@@ -7,8 +7,7 @@
     <strong>Owner(s):</strong>
     <%= @property.owner_name_line1 %>
     <%= @property.owner_name_line2 %>
-    <br><br><strong>Full_Address:</strong>
-    <%= @property.full_address %>
+    <br><br>
     <strong>Lat/Long:</strong>
     <%= @property.latitude.inspect %>
      /
@@ -96,9 +95,7 @@
        id="map-modal"
        class="modal hidden">
 
-    <div class="modal-backdrop" data-action="click->map#close"></div>
-
-    <div class="modal-content">
+    <div class="modal-content" data-action="click->map#stopPropagation">
       <button class="btn btn-sm btn-secondary float-end"
               data-action="click->map#close">✕</button>
 
@@ -106,9 +103,8 @@
 
       <div data-map-target="map"
            id="map"
-           style="height: 400px;"></div>
+           style="height: 400px;">
         </div>
-
+    </div>
   </div>
-
 </div>
