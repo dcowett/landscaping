@@ -25,13 +25,20 @@ export default class extends Controller {
     document.getElementById("map-title").innerText = address
 
     setTimeout(() => {
+      delete L.Icon.Default.prototype._getIconUrl
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      })
+
       if (!this.map) {
         this.map = L.map(this.mapTarget, {
           zoomControl: true,
           scrollWheelZoom: true,
           dragging: true,
           doubleClickZoom: true
-        }).setView([lat, lng], 15)
+        }).setView([lat, lng], 17)
 
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution: "© OpenStreetMap",
@@ -41,18 +48,20 @@ export default class extends Controller {
         this.marker = L.marker([lat, lng]).addTo(this.map)
       }
 
-      this.map.invalidateSize()           // must come before setView
-      this.map.setView([lat, lng], 15)
+      this.map.invalidateSize()
+      this.map.setView([lat, lng], 17)
       this.marker.setLatLng([lat, lng])
       this.marker.bindPopup(`<strong>${address}</strong>`).openPopup()
-    }, 150)  // slight bump to ensure modal is fully visible before Leaflet measures it
+    }, 150)
+  }
+
+  close(event) {
+    if (event.target === event.currentTarget) {
+      this.modalTarget.classList.add("hidden")
+    }
   }
 
   stopPropagation(event) {
     event.stopPropagation()
-  }
-
-  close() {
-    this.modalTarget.classList.add("hidden")
   }
 }
