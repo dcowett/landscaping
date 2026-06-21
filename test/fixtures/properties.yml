@@ -1,6 +1,6 @@
 one:
   parid: UNIQUE991
-  situs_address: "8051 Victoria Falls"
+  situs_address: "9999 Unique Test Street"
   situs_postal_city: MyString
   situs_postal_zip: MyString
   land_use_code: MyString
@@ -37,7 +37,7 @@ one:
 
 two:
   parid: UNIQUE992
-  situs_address: "8055 Victoria Falls"
+  situs_address: "9990 Unique Test Street"
   situs_postal_city: MyString
   situs_postal_zip: MyString
   land_use_code: MyString
