@@ -1,9 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# test/fixtures/likes.yml
 
 one:
-  user_id: one
-  story_id: one
+  user: one
+  reference_id: 1
+  reference_type: "Story"
+  value: 1
 
 two:
-  user_id: two
-  story_id: two
+  user: two
+  reference_id: 2
+  reference_type: "Story"
+  value: 1

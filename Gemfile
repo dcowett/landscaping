@@ -36,6 +36,7 @@ gem "ransack", "~> 4.4", ">= 4.4.1"
 gem "geocodio-gem"
 gem "faraday"
 gem "faraday-follow_redirects"
+gem "minitest", "~> 5.25"
 
 
 group :development, :test do

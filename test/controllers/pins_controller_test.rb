@@ -4,6 +4,7 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @pin = pins(:one)
     @user = users(:one)
+    sign_in @user  # Devise's built-in helper
   end
 
   test "should get index" do
@@ -47,9 +48,4 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to pins_url
   end
 
-  private
-
-  def sign_in(user)
-    post user_session_path, params: { email_address: "one@example.com", password: "password" }
-  end
 end

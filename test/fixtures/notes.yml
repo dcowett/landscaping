@@ -1,11 +1,10 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   code: MyString
   notes: MyString
-  property_id: 1
+  property: one
 
 two:
   code: MyString
   notes: MyString
-  property_id: 1
+  property: one
+  
