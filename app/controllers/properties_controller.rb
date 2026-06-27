@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_property, only: %i[ show edit update destroy ]
-  helper_method :sort_column, :sort_direction
 
   # GET /properties or /properties.json
   def index
@@ -83,14 +83,6 @@ class PropertiesController < ApplicationController
   end
 
   private
-
-    def sort_column
-      SORTABLE_COLUMNS.fetch(params[:sort].to_s, "id")
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_property

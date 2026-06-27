@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @story = Story.find(params[:story_id])
     @story.votes.create(user: current_user)
