@@ -12,7 +12,6 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     @note = Note.new(note_params)
-    @note.property = @property
     respond_to do |format|
       if @note.save
         format.html { redirect_to @notes, notice: "Note was successfully created." }
