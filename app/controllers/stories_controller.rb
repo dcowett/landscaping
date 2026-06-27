@@ -37,7 +37,6 @@ class StoriesController < ApplicationController
 
   def show
     @current_time = Time.now
-    @story = Story.find(params[:id])
   end
 
   def new

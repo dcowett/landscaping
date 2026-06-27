@@ -9,7 +9,12 @@ class OzoneController < ApplicationController
   end
 
   def zipcode
-    @zip_query = params[:zipcode].presence || "Hey, you did not enter anything"
+    raw = params[:zipcode].to_s.strip
+    unless raw.match?(/\A\d{5}(-\d{4})?\z/)
+      flash[:error] = "Please enter a valid US zip code."
+      return redirect_to ozone_index_path
+    end
+    @zip_query = raw
     @url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=#{@zip_query}&date=#{Date.today.strftime("%Y-%m-%d")}&distance=150&API_KEY=#{airnow_api_key}"
     fetch_and_parse_aqi
     set_aqi_display

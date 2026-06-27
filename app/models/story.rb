@@ -19,8 +19,10 @@ class Story < ApplicationRecord
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      Story.create! row.to_hash
+    transaction do
+      CSV.foreach(file.path, headers: true) do |row|
+        create! row.to_hash
+      end
     end
   end
 

@@ -1,4 +1,5 @@
 class Properties::NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_property
   before_action :set_note, except: [ :new, :create ]
 
