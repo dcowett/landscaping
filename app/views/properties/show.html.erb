@@ -41,7 +41,6 @@
 <%= link_to "Zillow",
     "https://www.zillow.com/homes/#{ERB::Util.url_encode(@property.situs_address.to_s)}_rb/",
     class: "btn btn-outline-secondary",
-    target: "_blank",
     rel: "noopener" %>
 
 <% if @pins.any? %>
