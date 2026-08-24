@@ -18,7 +18,10 @@ class Property < ApplicationRecord
   def self.import(file)
     transaction do
       CSV.foreach(file.path, headers: true) do |row|
-        create! row.to_hash
+        hash = row.to_hash
+        property = find_or_initialize_by(situs_address: hash["situs_address"])
+        property.assign_attributes(hash)
+        property.save!
       end
     end
   end
