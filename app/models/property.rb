@@ -16,15 +16,15 @@ class Property < ApplicationRecord
   end
 
   def self.import(file)
-    transaction do
-      CSV.foreach(file.path, headers: true) do |row|
-        hash = row.to_hash
-        property = find_or_initialize_by(situs_address: hash["situs_address"])
-        property.assign_attributes(hash)
-        property.save!
-      end
+  transaction do
+    CSV.foreach(file.path, headers: true, header_converters: ->(h) { h.downcase.strip }) do |row|
+      hash = row.to_hash
+      property = find_or_initialize_by(situs_address: hash["situs_address"])
+      property.assign_attributes(hash.slice(*column_names))
+      property.save!
     end
   end
+end
 
   def uppercase_address
     self.situs_address = situs_address&.upcase
